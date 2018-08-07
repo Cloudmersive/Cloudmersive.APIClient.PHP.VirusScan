@@ -1,9 +1,9 @@
 ﻿{
   "artifactVersion": "1.3.9",
   "gitUserId": "Cloudmersive",
-  "gitRepoId": "Cloudmersive.APIClient.PHP.Validate",
+  "gitRepoId": "Cloudmersive.APIClient.PHP.VirusScan",
   "composerVendorName": "cloudmersive",
-  "composerProjectName": "cloudmersive_validate_api_client",
-  "packagePath": "cloudmersive_validate_api_client"
+  "composerProjectName": "cloudmersive_virusscan_api_client",
+  "packagePath": "cloudmersive_virusscan_api_client"
   
 }  
