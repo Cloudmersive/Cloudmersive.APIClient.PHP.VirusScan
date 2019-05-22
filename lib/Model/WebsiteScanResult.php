@@ -1,6 +1,6 @@
 <?php
 /**
- * VirusFound
+ * WebsiteScanResult
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * VirusFound Class Doc Comment
+ * WebsiteScanResult Class Doc Comment
  *
  * @category Class
- * @description Virus positively identified
+ * @description Result of running a website scan
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class VirusFound implements ModelInterface, ArrayAccess
+class WebsiteScanResult implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class VirusFound implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'VirusFound';
+    protected static $swaggerModelName = 'WebsiteScanResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class VirusFound implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'file_name' => 'string',
-        'virus_name' => 'string'
+        'clean_result' => 'bool',
+        'website_threat_type' => 'string'
     ];
 
     /**
@@ -68,8 +68,8 @@ class VirusFound implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'file_name' => null,
-        'virus_name' => null
+        'clean_result' => null,
+        'website_threat_type' => null
     ];
 
     /**
@@ -99,8 +99,8 @@ class VirusFound implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'file_name' => 'FileName',
-        'virus_name' => 'VirusName'
+        'clean_result' => 'CleanResult',
+        'website_threat_type' => 'WebsiteThreatType'
     ];
 
     /**
@@ -109,8 +109,8 @@ class VirusFound implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'file_name' => 'setFileName',
-        'virus_name' => 'setVirusName'
+        'clean_result' => 'setCleanResult',
+        'website_threat_type' => 'setWebsiteThreatType'
     ];
 
     /**
@@ -119,8 +119,8 @@ class VirusFound implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'file_name' => 'getFileName',
-        'virus_name' => 'getVirusName'
+        'clean_result' => 'getCleanResult',
+        'website_threat_type' => 'getWebsiteThreatType'
     ];
 
     /**
@@ -164,8 +164,27 @@ class VirusFound implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
+    const WEBSITE_THREAT_TYPE_NONE = 'None';
+    const WEBSITE_THREAT_TYPE_MALWARE = 'Malware';
+    const WEBSITE_THREAT_TYPE_PHISHING = 'Phishing';
+    const WEBSITE_THREAT_TYPE_FORCED_DOWNLOAD = 'ForcedDownload';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getWebsiteThreatTypeAllowableValues()
+    {
+        return [
+            self::WEBSITE_THREAT_TYPE_NONE,
+            self::WEBSITE_THREAT_TYPE_MALWARE,
+            self::WEBSITE_THREAT_TYPE_PHISHING,
+            self::WEBSITE_THREAT_TYPE_FORCED_DOWNLOAD,
+        ];
+    }
     
 
     /**
@@ -183,8 +202,8 @@ class VirusFound implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['file_name'] = isset($data['file_name']) ? $data['file_name'] : null;
-        $this->container['virus_name'] = isset($data['virus_name']) ? $data['virus_name'] : null;
+        $this->container['clean_result'] = isset($data['clean_result']) ? $data['clean_result'] : null;
+        $this->container['website_threat_type'] = isset($data['website_threat_type']) ? $data['website_threat_type'] : null;
     }
 
     /**
@@ -195,6 +214,14 @@ class VirusFound implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getWebsiteThreatTypeAllowableValues();
+        if (!in_array($this->container['website_threat_type'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'website_threat_type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -208,54 +235,67 @@ class VirusFound implements ModelInterface, ArrayAccess
     public function valid()
     {
 
+        $allowedValues = $this->getWebsiteThreatTypeAllowableValues();
+        if (!in_array($this->container['website_threat_type'], $allowedValues)) {
+            return false;
+        }
         return true;
     }
 
 
     /**
-     * Gets file_name
+     * Gets clean_result
      *
-     * @return string
+     * @return bool
      */
-    public function getFileName()
+    public function getCleanResult()
     {
-        return $this->container['file_name'];
+        return $this->container['clean_result'];
     }
 
     /**
-     * Sets file_name
+     * Sets clean_result
      *
-     * @param string $file_name Name of the file containing the virus
+     * @param bool $clean_result True if the scan contained no threats, false otherwise
      *
      * @return $this
      */
-    public function setFileName($file_name)
+    public function setCleanResult($clean_result)
     {
-        $this->container['file_name'] = $file_name;
+        $this->container['clean_result'] = $clean_result;
 
         return $this;
     }
 
     /**
-     * Gets virus_name
+     * Gets website_threat_type
      *
      * @return string
      */
-    public function getVirusName()
+    public function getWebsiteThreatType()
     {
-        return $this->container['virus_name'];
+        return $this->container['website_threat_type'];
     }
 
     /**
-     * Sets virus_name
+     * Sets website_threat_type
      *
-     * @param string $virus_name Name of the virus that was found
+     * @param string $website_threat_type Type of threat returned; can be None, Malware, ForcedDownload or Phishing
      *
      * @return $this
      */
-    public function setVirusName($virus_name)
+    public function setWebsiteThreatType($website_threat_type)
     {
-        $this->container['virus_name'] = $virus_name;
+        $allowedValues = $this->getWebsiteThreatTypeAllowableValues();
+        if (!is_null($website_threat_type) && !in_array($website_threat_type, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'website_threat_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['website_threat_type'] = $website_threat_type;
 
         return $this;
     }

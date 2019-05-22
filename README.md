@@ -87,12 +87,15 @@ All URIs are relative to *https://api.cloudmersive.com*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ScanApi* | [**scanFile**](docs/Api/ScanApi.md#scanfile) | **POST** /virus/scan/file | Scan a file for viruses
+*ScanApi* | [**scanWebsite**](docs/Api/ScanApi.md#scanwebsite) | **POST** /virus/scan/website | Scan a website for malicious content including viruses and threats (including Phishing)
 
 
 ## Documentation For Models
 
  - [VirusFound](docs/Model/VirusFound.md)
  - [VirusScanResult](docs/Model/VirusScanResult.md)
+ - [WebsiteScanRequest](docs/Model/WebsiteScanRequest.md)
+ - [WebsiteScanResult](docs/Model/WebsiteScanResult.md)
 
 
 ## Documentation For Authorization

@@ -1,6 +1,6 @@
 <?php
 /**
- * VirusFound
+ * WebsiteScanRequest
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * VirusFound Class Doc Comment
+ * WebsiteScanRequest Class Doc Comment
  *
  * @category Class
- * @description Virus positively identified
+ * @description Request to scan a website for malicious content
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class VirusFound implements ModelInterface, ArrayAccess
+class WebsiteScanRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class VirusFound implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'VirusFound';
+    protected static $swaggerModelName = 'WebsiteScanRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class VirusFound implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'file_name' => 'string',
-        'virus_name' => 'string'
+        'url' => 'string'
     ];
 
     /**
@@ -68,8 +67,7 @@ class VirusFound implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'file_name' => null,
-        'virus_name' => null
+        'url' => null
     ];
 
     /**
@@ -99,8 +97,7 @@ class VirusFound implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'file_name' => 'FileName',
-        'virus_name' => 'VirusName'
+        'url' => 'Url'
     ];
 
     /**
@@ -109,8 +106,7 @@ class VirusFound implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'file_name' => 'setFileName',
-        'virus_name' => 'setVirusName'
+        'url' => 'setUrl'
     ];
 
     /**
@@ -119,8 +115,7 @@ class VirusFound implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'file_name' => 'getFileName',
-        'virus_name' => 'getVirusName'
+        'url' => 'getUrl'
     ];
 
     /**
@@ -183,8 +178,7 @@ class VirusFound implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['file_name'] = isset($data['file_name']) ? $data['file_name'] : null;
-        $this->container['virus_name'] = isset($data['virus_name']) ? $data['virus_name'] : null;
+        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
     }
 
     /**
@@ -213,49 +207,25 @@ class VirusFound implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets file_name
+     * Gets url
      *
      * @return string
      */
-    public function getFileName()
+    public function getUrl()
     {
-        return $this->container['file_name'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets file_name
+     * Sets url
      *
-     * @param string $file_name Name of the file containing the virus
+     * @param string $url URL of the website to scan; should begin with http:// or https://
      *
      * @return $this
      */
-    public function setFileName($file_name)
+    public function setUrl($url)
     {
-        $this->container['file_name'] = $file_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets virus_name
-     *
-     * @return string
-     */
-    public function getVirusName()
-    {
-        return $this->container['virus_name'];
-    }
-
-    /**
-     * Sets virus_name
-     *
-     * @param string $virus_name Name of the virus that was found
-     *
-     * @return $this
-     */
-    public function setVirusName($virus_name)
-    {
-        $this->container['virus_name'] = $virus_name;
+        $this->container['url'] = $url;
 
         return $this;
     }
