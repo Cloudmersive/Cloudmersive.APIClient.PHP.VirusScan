@@ -12,7 +12,7 @@
 /**
  * virusapi
  *
- * Virus API lets you scan files and content for viruses and identify security issues with content.
+ * The Cloudmersive Virus Scan API lets you scan files and content for viruses and identify security issues with content.
  *
  * OpenAPI spec version: v1
  * 
@@ -82,9 +82,19 @@ class ScanApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for scanFileAdvanced
+     *
+     * Advanced Scan a file for viruses.
+     *
+     */
+    public function testScanFileAdvanced()
+    {
+    }
+
+    /**
      * Test case for scanWebsite
      *
-     * Scan a website for malicious content including viruses and threats (including Phishing).
+     * Scan a website for malicious content and threats.
      *
      */
     public function testScanWebsite()

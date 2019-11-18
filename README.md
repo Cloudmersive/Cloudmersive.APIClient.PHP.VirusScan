@@ -1,10 +1,10 @@
 # cloudmersive_virusscan_api_client
-Virus API lets you scan files and content for viruses and identify security issues with content.
+The Cloudmersive Virus Scan API lets you scan files and content for viruses and identify security issues with content.
 
 [Cloudmersive Virus Scan API](https://www.cloudmersive.com/virus-api) provides advanced virus scanning capabilities.
 
 - API version: v1
-- Package version: 1.4.2
+- Package version: 1.4.3
 
 
 ## Requirements
@@ -87,12 +87,14 @@ All URIs are relative to *https://api.cloudmersive.com*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ScanApi* | [**scanFile**](docs/Api/ScanApi.md#scanfile) | **POST** /virus/scan/file | Scan a file for viruses
-*ScanApi* | [**scanWebsite**](docs/Api/ScanApi.md#scanwebsite) | **POST** /virus/scan/website | Scan a website for malicious content including viruses and threats (including Phishing)
+*ScanApi* | [**scanFileAdvanced**](docs/Api/ScanApi.md#scanfileadvanced) | **POST** /virus/scan/file/advanced | Advanced Scan a file for viruses
+*ScanApi* | [**scanWebsite**](docs/Api/ScanApi.md#scanwebsite) | **POST** /virus/scan/website | Scan a website for malicious content and threats
 
 
 ## Documentation For Models
 
  - [VirusFound](docs/Model/VirusFound.md)
+ - [VirusScanAdvancedResult](docs/Model/VirusScanAdvancedResult.md)
  - [VirusScanResult](docs/Model/VirusScanResult.md)
  - [WebsiteScanRequest](docs/Model/WebsiteScanRequest.md)
  - [WebsiteScanResult](docs/Model/WebsiteScanResult.md)

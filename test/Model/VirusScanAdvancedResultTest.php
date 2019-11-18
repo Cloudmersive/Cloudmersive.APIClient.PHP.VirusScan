@@ -1,6 +1,6 @@
 <?php
 /**
- * WebsiteScanResultTest
+ * VirusScanAdvancedResultTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * WebsiteScanResultTest Class Doc Comment
+ * VirusScanAdvancedResultTest Class Doc Comment
  *
  * @category    Class */
-// * @description Result of running a website scan
+// * @description Result of running an advanced virus scan
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class WebsiteScanResultTest extends \PHPUnit_Framework_TestCase
+class VirusScanAdvancedResultTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class WebsiteScanResultTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "WebsiteScanResult"
+     * Test "VirusScanAdvancedResult"
      */
-    public function testWebsiteScanResult()
+    public function testVirusScanAdvancedResult()
     {
     }
 
@@ -85,9 +85,44 @@ class WebsiteScanResultTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "website_threat_type"
+     * Test attribute "contains_executable"
      */
-    public function testPropertyWebsiteThreatType()
+    public function testPropertyContainsExecutable()
+    {
+    }
+
+    /**
+     * Test attribute "contains_invalid_file"
+     */
+    public function testPropertyContainsInvalidFile()
+    {
+    }
+
+    /**
+     * Test attribute "contains_script"
+     */
+    public function testPropertyContainsScript()
+    {
+    }
+
+    /**
+     * Test attribute "contains_restricted_file_format"
+     */
+    public function testPropertyContainsRestrictedFileFormat()
+    {
+    }
+
+    /**
+     * Test attribute "verified_file_format"
+     */
+    public function testPropertyVerifiedFileFormat()
+    {
+    }
+
+    /**
+     * Test attribute "found_viruses"
+     */
+    public function testPropertyFoundViruses()
     {
     }
 }

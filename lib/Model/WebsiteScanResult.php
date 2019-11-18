@@ -13,7 +13,7 @@
 /**
  * virusapi
  *
- * Virus API lets you scan files and content for viruses and identify security issues with content.
+ * The Cloudmersive Virus Scan API lets you scan files and content for viruses and identify security issues with content.
  *
  * OpenAPI spec version: v1
  * 
@@ -168,6 +168,7 @@ class WebsiteScanResult implements ModelInterface, ArrayAccess
     const WEBSITE_THREAT_TYPE_MALWARE = 'Malware';
     const WEBSITE_THREAT_TYPE_PHISHING = 'Phishing';
     const WEBSITE_THREAT_TYPE_FORCED_DOWNLOAD = 'ForcedDownload';
+    const WEBSITE_THREAT_TYPE_UNABLE_TO_CONNECT = 'UnableToConnect';
     
 
     
@@ -183,6 +184,7 @@ class WebsiteScanResult implements ModelInterface, ArrayAccess
             self::WEBSITE_THREAT_TYPE_MALWARE,
             self::WEBSITE_THREAT_TYPE_PHISHING,
             self::WEBSITE_THREAT_TYPE_FORCED_DOWNLOAD,
+            self::WEBSITE_THREAT_TYPE_UNABLE_TO_CONNECT,
         ];
     }
     

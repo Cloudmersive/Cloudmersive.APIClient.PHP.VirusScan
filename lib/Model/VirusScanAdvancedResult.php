@@ -1,6 +1,6 @@
 <?php
 /**
- * VirusScanResult
+ * VirusScanAdvancedResult
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * VirusScanResult Class Doc Comment
+ * VirusScanAdvancedResult Class Doc Comment
  *
  * @category Class
- * @description Result of running a virus scan
+ * @description Result of running an advanced virus scan
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class VirusScanResult implements ModelInterface, ArrayAccess
+class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class VirusScanResult implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'VirusScanResult';
+    protected static $swaggerModelName = 'VirusScanAdvancedResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,6 +59,11 @@ class VirusScanResult implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'clean_result' => 'bool',
+        'contains_executable' => 'bool',
+        'contains_invalid_file' => 'bool',
+        'contains_script' => 'bool',
+        'contains_restricted_file_format' => 'bool',
+        'verified_file_format' => 'string',
         'found_viruses' => '\Swagger\Client\Model\VirusFound[]'
     ];
 
@@ -69,6 +74,11 @@ class VirusScanResult implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'clean_result' => null,
+        'contains_executable' => null,
+        'contains_invalid_file' => null,
+        'contains_script' => null,
+        'contains_restricted_file_format' => null,
+        'verified_file_format' => null,
         'found_viruses' => null
     ];
 
@@ -100,6 +110,11 @@ class VirusScanResult implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'clean_result' => 'CleanResult',
+        'contains_executable' => 'ContainsExecutable',
+        'contains_invalid_file' => 'ContainsInvalidFile',
+        'contains_script' => 'ContainsScript',
+        'contains_restricted_file_format' => 'ContainsRestrictedFileFormat',
+        'verified_file_format' => 'VerifiedFileFormat',
         'found_viruses' => 'FoundViruses'
     ];
 
@@ -110,6 +125,11 @@ class VirusScanResult implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'clean_result' => 'setCleanResult',
+        'contains_executable' => 'setContainsExecutable',
+        'contains_invalid_file' => 'setContainsInvalidFile',
+        'contains_script' => 'setContainsScript',
+        'contains_restricted_file_format' => 'setContainsRestrictedFileFormat',
+        'verified_file_format' => 'setVerifiedFileFormat',
         'found_viruses' => 'setFoundViruses'
     ];
 
@@ -120,6 +140,11 @@ class VirusScanResult implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'clean_result' => 'getCleanResult',
+        'contains_executable' => 'getContainsExecutable',
+        'contains_invalid_file' => 'getContainsInvalidFile',
+        'contains_script' => 'getContainsScript',
+        'contains_restricted_file_format' => 'getContainsRestrictedFileFormat',
+        'verified_file_format' => 'getVerifiedFileFormat',
         'found_viruses' => 'getFoundViruses'
     ];
 
@@ -184,6 +209,11 @@ class VirusScanResult implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['clean_result'] = isset($data['clean_result']) ? $data['clean_result'] : null;
+        $this->container['contains_executable'] = isset($data['contains_executable']) ? $data['contains_executable'] : null;
+        $this->container['contains_invalid_file'] = isset($data['contains_invalid_file']) ? $data['contains_invalid_file'] : null;
+        $this->container['contains_script'] = isset($data['contains_script']) ? $data['contains_script'] : null;
+        $this->container['contains_restricted_file_format'] = isset($data['contains_restricted_file_format']) ? $data['contains_restricted_file_format'] : null;
+        $this->container['verified_file_format'] = isset($data['verified_file_format']) ? $data['verified_file_format'] : null;
         $this->container['found_viruses'] = isset($data['found_viruses']) ? $data['found_viruses'] : null;
     }
 
@@ -232,6 +262,126 @@ class VirusScanResult implements ModelInterface, ArrayAccess
     public function setCleanResult($clean_result)
     {
         $this->container['clean_result'] = $clean_result;
+
+        return $this;
+    }
+
+    /**
+     * Gets contains_executable
+     *
+     * @return bool
+     */
+    public function getContainsExecutable()
+    {
+        return $this->container['contains_executable'];
+    }
+
+    /**
+     * Sets contains_executable
+     *
+     * @param bool $contains_executable True if the scan contained an executable (application code), which can be a significant risk factor
+     *
+     * @return $this
+     */
+    public function setContainsExecutable($contains_executable)
+    {
+        $this->container['contains_executable'] = $contains_executable;
+
+        return $this;
+    }
+
+    /**
+     * Gets contains_invalid_file
+     *
+     * @return bool
+     */
+    public function getContainsInvalidFile()
+    {
+        return $this->container['contains_invalid_file'];
+    }
+
+    /**
+     * Sets contains_invalid_file
+     *
+     * @param bool $contains_invalid_file True if the scan contained an invalid file (such as a PDF that is not a valid PDF, Word Document that is not a valid Word Document, etc.), which can be a significant risk factor
+     *
+     * @return $this
+     */
+    public function setContainsInvalidFile($contains_invalid_file)
+    {
+        $this->container['contains_invalid_file'] = $contains_invalid_file;
+
+        return $this;
+    }
+
+    /**
+     * Gets contains_script
+     *
+     * @return bool
+     */
+    public function getContainsScript()
+    {
+        return $this->container['contains_script'];
+    }
+
+    /**
+     * Sets contains_script
+     *
+     * @param bool $contains_script True if the scan contained a script (such as a PHP script, Python script, etc.) which can be a significant risk factor
+     *
+     * @return $this
+     */
+    public function setContainsScript($contains_script)
+    {
+        $this->container['contains_script'] = $contains_script;
+
+        return $this;
+    }
+
+    /**
+     * Gets contains_restricted_file_format
+     *
+     * @return bool
+     */
+    public function getContainsRestrictedFileFormat()
+    {
+        return $this->container['contains_restricted_file_format'];
+    }
+
+    /**
+     * Sets contains_restricted_file_format
+     *
+     * @param bool $contains_restricted_file_format True if the uploaded file is of a type that is not allowed based on the optional restrictFileTypes parameter, false otherwise; if restrictFileTypes is not set, this will always be false
+     *
+     * @return $this
+     */
+    public function setContainsRestrictedFileFormat($contains_restricted_file_format)
+    {
+        $this->container['contains_restricted_file_format'] = $contains_restricted_file_format;
+
+        return $this;
+    }
+
+    /**
+     * Gets verified_file_format
+     *
+     * @return string
+     */
+    public function getVerifiedFileFormat()
+    {
+        return $this->container['verified_file_format'];
+    }
+
+    /**
+     * Sets verified_file_format
+     *
+     * @param string $verified_file_format For file format verification-supported file formats, the contents-verified file format of the file.  Null indicates that the file format is not supported for contents verification.  If a Virus or Malware is found, this field will always be set to Null.
+     *
+     * @return $this
+     */
+    public function setVerifiedFileFormat($verified_file_format)
+    {
+        $this->container['verified_file_format'] = $verified_file_format;
 
         return $this;
     }
