@@ -59,7 +59,8 @@ class WebsiteScanResult implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'clean_result' => 'bool',
-        'website_threat_type' => 'string'
+        'website_threat_type' => 'string',
+        'found_viruses' => '\Swagger\Client\Model\VirusFound[]'
     ];
 
     /**
@@ -69,7 +70,8 @@ class WebsiteScanResult implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'clean_result' => null,
-        'website_threat_type' => null
+        'website_threat_type' => null,
+        'found_viruses' => null
     ];
 
     /**
@@ -100,7 +102,8 @@ class WebsiteScanResult implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'clean_result' => 'CleanResult',
-        'website_threat_type' => 'WebsiteThreatType'
+        'website_threat_type' => 'WebsiteThreatType',
+        'found_viruses' => 'FoundViruses'
     ];
 
     /**
@@ -110,7 +113,8 @@ class WebsiteScanResult implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'clean_result' => 'setCleanResult',
-        'website_threat_type' => 'setWebsiteThreatType'
+        'website_threat_type' => 'setWebsiteThreatType',
+        'found_viruses' => 'setFoundViruses'
     ];
 
     /**
@@ -120,7 +124,8 @@ class WebsiteScanResult implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'clean_result' => 'getCleanResult',
-        'website_threat_type' => 'getWebsiteThreatType'
+        'website_threat_type' => 'getWebsiteThreatType',
+        'found_viruses' => 'getFoundViruses'
     ];
 
     /**
@@ -206,6 +211,7 @@ class WebsiteScanResult implements ModelInterface, ArrayAccess
     {
         $this->container['clean_result'] = isset($data['clean_result']) ? $data['clean_result'] : null;
         $this->container['website_threat_type'] = isset($data['website_threat_type']) ? $data['website_threat_type'] : null;
+        $this->container['found_viruses'] = isset($data['found_viruses']) ? $data['found_viruses'] : null;
     }
 
     /**
@@ -298,6 +304,30 @@ class WebsiteScanResult implements ModelInterface, ArrayAccess
             );
         }
         $this->container['website_threat_type'] = $website_threat_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets found_viruses
+     *
+     * @return \Swagger\Client\Model\VirusFound[]
+     */
+    public function getFoundViruses()
+    {
+        return $this->container['found_viruses'];
+    }
+
+    /**
+     * Sets found_viruses
+     *
+     * @param \Swagger\Client\Model\VirusFound[] $found_viruses Array of viruses found, if any
+     *
+     * @return $this
+     */
+    public function setFoundViruses($found_viruses)
+    {
+        $this->container['found_viruses'] = $found_viruses;
 
         return $this;
     }

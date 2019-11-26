@@ -90,4 +90,11 @@ class WebsiteScanResultTest extends \PHPUnit_Framework_TestCase
     public function testPropertyWebsiteThreatType()
     {
     }
+
+    /**
+     * Test attribute "found_viruses"
+     */
+    public function testPropertyFoundViruses()
+    {
+    }
 }
