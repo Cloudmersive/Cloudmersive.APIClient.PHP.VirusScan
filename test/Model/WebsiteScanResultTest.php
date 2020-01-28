@@ -97,4 +97,11 @@ class WebsiteScanResultTest extends \PHPUnit_Framework_TestCase
     public function testPropertyFoundViruses()
     {
     }
+
+    /**
+     * Test attribute "website_http_response_code"
+     */
+    public function testPropertyWebsiteHttpResponseCode()
+    {
+    }
 }

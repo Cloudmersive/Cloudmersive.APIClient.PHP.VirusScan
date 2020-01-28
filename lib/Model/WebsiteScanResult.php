@@ -60,7 +60,8 @@ class WebsiteScanResult implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'clean_result' => 'bool',
         'website_threat_type' => 'string',
-        'found_viruses' => '\Swagger\Client\Model\VirusFound[]'
+        'found_viruses' => '\Swagger\Client\Model\VirusFound[]',
+        'website_http_response_code' => 'int'
     ];
 
     /**
@@ -71,7 +72,8 @@ class WebsiteScanResult implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'clean_result' => null,
         'website_threat_type' => null,
-        'found_viruses' => null
+        'found_viruses' => null,
+        'website_http_response_code' => 'int32'
     ];
 
     /**
@@ -103,7 +105,8 @@ class WebsiteScanResult implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'clean_result' => 'CleanResult',
         'website_threat_type' => 'WebsiteThreatType',
-        'found_viruses' => 'FoundViruses'
+        'found_viruses' => 'FoundViruses',
+        'website_http_response_code' => 'WebsiteHttpResponseCode'
     ];
 
     /**
@@ -114,7 +117,8 @@ class WebsiteScanResult implements ModelInterface, ArrayAccess
     protected static $setters = [
         'clean_result' => 'setCleanResult',
         'website_threat_type' => 'setWebsiteThreatType',
-        'found_viruses' => 'setFoundViruses'
+        'found_viruses' => 'setFoundViruses',
+        'website_http_response_code' => 'setWebsiteHttpResponseCode'
     ];
 
     /**
@@ -125,7 +129,8 @@ class WebsiteScanResult implements ModelInterface, ArrayAccess
     protected static $getters = [
         'clean_result' => 'getCleanResult',
         'website_threat_type' => 'getWebsiteThreatType',
-        'found_viruses' => 'getFoundViruses'
+        'found_viruses' => 'getFoundViruses',
+        'website_http_response_code' => 'getWebsiteHttpResponseCode'
     ];
 
     /**
@@ -212,6 +217,7 @@ class WebsiteScanResult implements ModelInterface, ArrayAccess
         $this->container['clean_result'] = isset($data['clean_result']) ? $data['clean_result'] : null;
         $this->container['website_threat_type'] = isset($data['website_threat_type']) ? $data['website_threat_type'] : null;
         $this->container['found_viruses'] = isset($data['found_viruses']) ? $data['found_viruses'] : null;
+        $this->container['website_http_response_code'] = isset($data['website_http_response_code']) ? $data['website_http_response_code'] : null;
     }
 
     /**
@@ -328,6 +334,30 @@ class WebsiteScanResult implements ModelInterface, ArrayAccess
     public function setFoundViruses($found_viruses)
     {
         $this->container['found_viruses'] = $found_viruses;
+
+        return $this;
+    }
+
+    /**
+     * Gets website_http_response_code
+     *
+     * @return int
+     */
+    public function getWebsiteHttpResponseCode()
+    {
+        return $this->container['website_http_response_code'];
+    }
+
+    /**
+     * Sets website_http_response_code
+     *
+     * @param int $website_http_response_code The remote server URL HTTP reasponse code; useful for debugging issues with scanning; typically if the remote server returns a 200 or 300-series code this means a successful response, while a 400 or 500 series code would represent an error returned from the remote server for the provided URL.
+     *
+     * @return $this
+     */
+    public function setWebsiteHttpResponseCode($website_http_response_code)
+    {
+        $this->container['website_http_response_code'] = $website_http_response_code;
 
         return $this;
     }
