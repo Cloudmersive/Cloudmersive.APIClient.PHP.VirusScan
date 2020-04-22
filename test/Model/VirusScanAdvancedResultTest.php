@@ -106,6 +106,13 @@ class VirusScanAdvancedResultTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "contains_password_protected_file"
+     */
+    public function testPropertyContainsPasswordProtectedFile()
+    {
+    }
+
+    /**
      * Test attribute "contains_restricted_file_format"
      */
     public function testPropertyContainsRestrictedFileFormat()

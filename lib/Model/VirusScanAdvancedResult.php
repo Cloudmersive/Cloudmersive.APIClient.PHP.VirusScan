@@ -62,6 +62,7 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         'contains_executable' => 'bool',
         'contains_invalid_file' => 'bool',
         'contains_script' => 'bool',
+        'contains_password_protected_file' => 'bool',
         'contains_restricted_file_format' => 'bool',
         'verified_file_format' => 'string',
         'found_viruses' => '\Swagger\Client\Model\VirusFound[]'
@@ -77,6 +78,7 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         'contains_executable' => null,
         'contains_invalid_file' => null,
         'contains_script' => null,
+        'contains_password_protected_file' => null,
         'contains_restricted_file_format' => null,
         'verified_file_format' => null,
         'found_viruses' => null
@@ -113,6 +115,7 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         'contains_executable' => 'ContainsExecutable',
         'contains_invalid_file' => 'ContainsInvalidFile',
         'contains_script' => 'ContainsScript',
+        'contains_password_protected_file' => 'ContainsPasswordProtectedFile',
         'contains_restricted_file_format' => 'ContainsRestrictedFileFormat',
         'verified_file_format' => 'VerifiedFileFormat',
         'found_viruses' => 'FoundViruses'
@@ -128,6 +131,7 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         'contains_executable' => 'setContainsExecutable',
         'contains_invalid_file' => 'setContainsInvalidFile',
         'contains_script' => 'setContainsScript',
+        'contains_password_protected_file' => 'setContainsPasswordProtectedFile',
         'contains_restricted_file_format' => 'setContainsRestrictedFileFormat',
         'verified_file_format' => 'setVerifiedFileFormat',
         'found_viruses' => 'setFoundViruses'
@@ -143,6 +147,7 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         'contains_executable' => 'getContainsExecutable',
         'contains_invalid_file' => 'getContainsInvalidFile',
         'contains_script' => 'getContainsScript',
+        'contains_password_protected_file' => 'getContainsPasswordProtectedFile',
         'contains_restricted_file_format' => 'getContainsRestrictedFileFormat',
         'verified_file_format' => 'getVerifiedFileFormat',
         'found_viruses' => 'getFoundViruses'
@@ -212,6 +217,7 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         $this->container['contains_executable'] = isset($data['contains_executable']) ? $data['contains_executable'] : null;
         $this->container['contains_invalid_file'] = isset($data['contains_invalid_file']) ? $data['contains_invalid_file'] : null;
         $this->container['contains_script'] = isset($data['contains_script']) ? $data['contains_script'] : null;
+        $this->container['contains_password_protected_file'] = isset($data['contains_password_protected_file']) ? $data['contains_password_protected_file'] : null;
         $this->container['contains_restricted_file_format'] = isset($data['contains_restricted_file_format']) ? $data['contains_restricted_file_format'] : null;
         $this->container['verified_file_format'] = isset($data['verified_file_format']) ? $data['verified_file_format'] : null;
         $this->container['found_viruses'] = isset($data['found_viruses']) ? $data['found_viruses'] : null;
@@ -334,6 +340,30 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
     public function setContainsScript($contains_script)
     {
         $this->container['contains_script'] = $contains_script;
+
+        return $this;
+    }
+
+    /**
+     * Gets contains_password_protected_file
+     *
+     * @return bool
+     */
+    public function getContainsPasswordProtectedFile()
+    {
+        return $this->container['contains_password_protected_file'];
+    }
+
+    /**
+     * Sets contains_password_protected_file
+     *
+     * @param bool $contains_password_protected_file True if the scan contained a password protected or encrypted file, which can be a significant risk factor
+     *
+     * @return $this
+     */
+    public function setContainsPasswordProtectedFile($contains_password_protected_file)
+    {
+        $this->container['contains_password_protected_file'] = $contains_password_protected_file;
 
         return $this;
     }
