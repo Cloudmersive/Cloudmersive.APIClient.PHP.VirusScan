@@ -4,7 +4,7 @@ The Cloudmersive Virus Scan API lets you scan files and content for viruses and 
 [Cloudmersive Virus Scan API](https://www.cloudmersive.com/virus-api) provides advanced virus scanning capabilities.
 
 - API version: v1
-- Package version: 1.4.6
+- Package version: 1.4.7
 
 
 ## Requirements
@@ -89,10 +89,15 @@ Class | Method | HTTP request | Description
 *ScanApi* | [**scanFile**](docs/Api/ScanApi.md#scanfile) | **POST** /virus/scan/file | Scan a file for viruses
 *ScanApi* | [**scanFileAdvanced**](docs/Api/ScanApi.md#scanfileadvanced) | **POST** /virus/scan/file/advanced | Advanced Scan a file for viruses
 *ScanApi* | [**scanWebsite**](docs/Api/ScanApi.md#scanwebsite) | **POST** /virus/scan/website | Scan a website for malicious content and threats
+*ScanCloudStorageApi* | [**scanCloudStorageScanAwsS3File**](docs/Api/ScanCloudStorageApi.md#scancloudstoragescanawss3file) | **POST** /virus/scan/cloud-storage/aws-s3/single | Scan an AWS S3 file for viruses
+*ScanCloudStorageApi* | [**scanCloudStorageScanAzureBlob**](docs/Api/ScanCloudStorageApi.md#scancloudstoragescanazureblob) | **POST** /virus/scan/cloud-storage/azure-blob/single | Scan an Azure Blob for viruses
+*ScanCloudStorageApi* | [**scanCloudStorageScanGcpStorageFile**](docs/Api/ScanCloudStorageApi.md#scancloudstoragescangcpstoragefile) | **POST** /virus/scan/cloud-storage/gcp-storage/single | Scan an Google Cloud Platform (GCP) Storage file for viruses
 
 
 ## Documentation For Models
 
+ - [CloudStorageVirusFound](docs/Model/CloudStorageVirusFound.md)
+ - [CloudStorageVirusScanResult](docs/Model/CloudStorageVirusScanResult.md)
  - [VirusFound](docs/Model/VirusFound.md)
  - [VirusScanAdvancedResult](docs/Model/VirusScanAdvancedResult.md)
  - [VirusScanResult](docs/Model/VirusScanResult.md)

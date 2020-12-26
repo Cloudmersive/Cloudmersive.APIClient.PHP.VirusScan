@@ -1,6 +1,6 @@
 <?php
 /**
- * ScanApi
+ * ScanCloudStorageApi
  * PHP version 5
  *
  * @category Class
@@ -40,14 +40,14 @@ use Swagger\Client\HeaderSelector;
 use Swagger\Client\ObjectSerializer;
 
 /**
- * ScanApi Class Doc Comment
+ * ScanCloudStorageApi Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ScanApi
+class ScanCloudStorageApi
 {
     /**
      * @var ClientInterface
@@ -83,37 +83,45 @@ class ScanApi
     }
 
     /**
-     * Operation scanFile
+     * Operation scanCloudStorageScanAwsS3File
      *
-     * Scan a file for viruses
+     * Scan an AWS S3 file for viruses
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $access_key AWS S3 access key for the S3 bucket; you can get this from My Security Credentials in the AWS console (required)
+     * @param  string $secret_key AWS S3 secret key for the S3 bucket; you can get this from My Security Credentials in the AWS console (required)
+     * @param  string $bucket_region Name of the region of the S3 bucket, such as &#39;US-East-1&#39; (required)
+     * @param  string $bucket_name Name of the S3 bucket (required)
+     * @param  string $key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\VirusScanResult
+     * @return \Swagger\Client\Model\CloudStorageVirusScanResult
      */
-    public function scanFile($input_file)
+    public function scanCloudStorageScanAwsS3File($access_key, $secret_key, $bucket_region, $bucket_name, $key_name)
     {
-        list($response) = $this->scanFileWithHttpInfo($input_file);
+        list($response) = $this->scanCloudStorageScanAwsS3FileWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name);
         return $response;
     }
 
     /**
-     * Operation scanFileWithHttpInfo
+     * Operation scanCloudStorageScanAwsS3FileWithHttpInfo
      *
-     * Scan a file for viruses
+     * Scan an AWS S3 file for viruses
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $access_key AWS S3 access key for the S3 bucket; you can get this from My Security Credentials in the AWS console (required)
+     * @param  string $secret_key AWS S3 secret key for the S3 bucket; you can get this from My Security Credentials in the AWS console (required)
+     * @param  string $bucket_region Name of the region of the S3 bucket, such as &#39;US-East-1&#39; (required)
+     * @param  string $bucket_name Name of the S3 bucket (required)
+     * @param  string $key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\VirusScanResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\CloudStorageVirusScanResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function scanFileWithHttpInfo($input_file)
+    public function scanCloudStorageScanAwsS3FileWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name)
     {
-        $returnType = '\Swagger\Client\Model\VirusScanResult';
-        $request = $this->scanFileRequest($input_file);
+        $returnType = '\Swagger\Client\Model\CloudStorageVirusScanResult';
+        $request = $this->scanCloudStorageScanAwsS3FileRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name);
 
         try {
             $options = $this->createHttpClientOption();
@@ -164,7 +172,7 @@ class ScanApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\VirusScanResult',
+                        '\Swagger\Client\Model\CloudStorageVirusScanResult',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -175,18 +183,22 @@ class ScanApi
     }
 
     /**
-     * Operation scanFileAsync
+     * Operation scanCloudStorageScanAwsS3FileAsync
      *
-     * Scan a file for viruses
+     * Scan an AWS S3 file for viruses
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $access_key AWS S3 access key for the S3 bucket; you can get this from My Security Credentials in the AWS console (required)
+     * @param  string $secret_key AWS S3 secret key for the S3 bucket; you can get this from My Security Credentials in the AWS console (required)
+     * @param  string $bucket_region Name of the region of the S3 bucket, such as &#39;US-East-1&#39; (required)
+     * @param  string $bucket_name Name of the S3 bucket (required)
+     * @param  string $key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanFileAsync($input_file)
+    public function scanCloudStorageScanAwsS3FileAsync($access_key, $secret_key, $bucket_region, $bucket_name, $key_name)
     {
-        return $this->scanFileAsyncWithHttpInfo($input_file)
+        return $this->scanCloudStorageScanAwsS3FileAsyncWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -195,19 +207,23 @@ class ScanApi
     }
 
     /**
-     * Operation scanFileAsyncWithHttpInfo
+     * Operation scanCloudStorageScanAwsS3FileAsyncWithHttpInfo
      *
-     * Scan a file for viruses
+     * Scan an AWS S3 file for viruses
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $access_key AWS S3 access key for the S3 bucket; you can get this from My Security Credentials in the AWS console (required)
+     * @param  string $secret_key AWS S3 secret key for the S3 bucket; you can get this from My Security Credentials in the AWS console (required)
+     * @param  string $bucket_region Name of the region of the S3 bucket, such as &#39;US-East-1&#39; (required)
+     * @param  string $bucket_name Name of the S3 bucket (required)
+     * @param  string $key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanFileAsyncWithHttpInfo($input_file)
+    public function scanCloudStorageScanAwsS3FileAsyncWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name)
     {
-        $returnType = '\Swagger\Client\Model\VirusScanResult';
-        $request = $this->scanFileRequest($input_file);
+        $returnType = '\Swagger\Client\Model\CloudStorageVirusScanResult';
+        $request = $this->scanCloudStorageScanAwsS3FileRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -247,36 +263,79 @@ class ScanApi
     }
 
     /**
-     * Create request for operation 'scanFile'
+     * Create request for operation 'scanCloudStorageScanAwsS3File'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $access_key AWS S3 access key for the S3 bucket; you can get this from My Security Credentials in the AWS console (required)
+     * @param  string $secret_key AWS S3 secret key for the S3 bucket; you can get this from My Security Credentials in the AWS console (required)
+     * @param  string $bucket_region Name of the region of the S3 bucket, such as &#39;US-East-1&#39; (required)
+     * @param  string $bucket_name Name of the S3 bucket (required)
+     * @param  string $key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function scanFileRequest($input_file)
+    protected function scanCloudStorageScanAwsS3FileRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name)
     {
-        // verify the required parameter 'input_file' is set
-        if ($input_file === null) {
+        // verify the required parameter 'access_key' is set
+        if ($access_key === null) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $input_file when calling scanFile'
+                'Missing the required parameter $access_key when calling scanCloudStorageScanAwsS3File'
+            );
+        }
+        // verify the required parameter 'secret_key' is set
+        if ($secret_key === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $secret_key when calling scanCloudStorageScanAwsS3File'
+            );
+        }
+        // verify the required parameter 'bucket_region' is set
+        if ($bucket_region === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $bucket_region when calling scanCloudStorageScanAwsS3File'
+            );
+        }
+        // verify the required parameter 'bucket_name' is set
+        if ($bucket_name === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $bucket_name when calling scanCloudStorageScanAwsS3File'
+            );
+        }
+        // verify the required parameter 'key_name' is set
+        if ($key_name === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $key_name when calling scanCloudStorageScanAwsS3File'
             );
         }
 
-        $resourcePath = '/virus/scan/file';
+        $resourcePath = '/virus/scan/cloud-storage/aws-s3/single';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-
-
-        // form params
-        if ($input_file !== null) {
-            $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        // header params
+        if ($access_key !== null) {
+            $headerParams['accessKey'] = ObjectSerializer::toHeaderValue($access_key);
         }
+        // header params
+        if ($secret_key !== null) {
+            $headerParams['secretKey'] = ObjectSerializer::toHeaderValue($secret_key);
+        }
+        // header params
+        if ($bucket_region !== null) {
+            $headerParams['bucketRegion'] = ObjectSerializer::toHeaderValue($bucket_region);
+        }
+        // header params
+        if ($bucket_name !== null) {
+            $headerParams['bucketName'] = ObjectSerializer::toHeaderValue($bucket_name);
+        }
+        // header params
+        if ($key_name !== null) {
+            $headerParams['keyName'] = ObjectSerializer::toHeaderValue($key_name);
+        }
+
+
         // body params
         $_tempBody = null;
 
@@ -347,47 +406,41 @@ class ScanApi
     }
 
     /**
-     * Operation scanFileAdvanced
+     * Operation scanCloudStorageScanAzureBlob
      *
-     * Advanced Scan a file for viruses
+     * Scan an Azure Blob for viruses
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). (optional)
-     * @param  bool $allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). (optional)
-     * @param  bool $allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). (optional)
-     * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
-     * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
+     * @param  string $connection_string Connection string for the Azure Blob Storage Account; you can get this connection string from the Access Keys tab of the Storage Account blade in the Azure Portal. (required)
+     * @param  string $container_name Name of the Blob container within the Azure Blob Storage account (required)
+     * @param  string $blob_path Path to the blob within the container, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\VirusScanAdvancedResult
+     * @return \Swagger\Client\Model\CloudStorageVirusScanResult
      */
-    public function scanFileAdvanced($input_file, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $restrict_file_types = null)
+    public function scanCloudStorageScanAzureBlob($connection_string, $container_name, $blob_path)
     {
-        list($response) = $this->scanFileAdvancedWithHttpInfo($input_file, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $restrict_file_types);
+        list($response) = $this->scanCloudStorageScanAzureBlobWithHttpInfo($connection_string, $container_name, $blob_path);
         return $response;
     }
 
     /**
-     * Operation scanFileAdvancedWithHttpInfo
+     * Operation scanCloudStorageScanAzureBlobWithHttpInfo
      *
-     * Advanced Scan a file for viruses
+     * Scan an Azure Blob for viruses
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). (optional)
-     * @param  bool $allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). (optional)
-     * @param  bool $allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). (optional)
-     * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
-     * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
+     * @param  string $connection_string Connection string for the Azure Blob Storage Account; you can get this connection string from the Access Keys tab of the Storage Account blade in the Azure Portal. (required)
+     * @param  string $container_name Name of the Blob container within the Azure Blob Storage account (required)
+     * @param  string $blob_path Path to the blob within the container, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\VirusScanAdvancedResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\CloudStorageVirusScanResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function scanFileAdvancedWithHttpInfo($input_file, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $restrict_file_types = null)
+    public function scanCloudStorageScanAzureBlobWithHttpInfo($connection_string, $container_name, $blob_path)
     {
-        $returnType = '\Swagger\Client\Model\VirusScanAdvancedResult';
-        $request = $this->scanFileAdvancedRequest($input_file, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $restrict_file_types);
+        $returnType = '\Swagger\Client\Model\CloudStorageVirusScanResult';
+        $request = $this->scanCloudStorageScanAzureBlobRequest($connection_string, $container_name, $blob_path);
 
         try {
             $options = $this->createHttpClientOption();
@@ -438,7 +491,7 @@ class ScanApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\VirusScanAdvancedResult',
+                        '\Swagger\Client\Model\CloudStorageVirusScanResult',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -449,23 +502,20 @@ class ScanApi
     }
 
     /**
-     * Operation scanFileAdvancedAsync
+     * Operation scanCloudStorageScanAzureBlobAsync
      *
-     * Advanced Scan a file for viruses
+     * Scan an Azure Blob for viruses
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). (optional)
-     * @param  bool $allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). (optional)
-     * @param  bool $allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). (optional)
-     * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
-     * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
+     * @param  string $connection_string Connection string for the Azure Blob Storage Account; you can get this connection string from the Access Keys tab of the Storage Account blade in the Azure Portal. (required)
+     * @param  string $container_name Name of the Blob container within the Azure Blob Storage account (required)
+     * @param  string $blob_path Path to the blob within the container, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanFileAdvancedAsync($input_file, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $restrict_file_types = null)
+    public function scanCloudStorageScanAzureBlobAsync($connection_string, $container_name, $blob_path)
     {
-        return $this->scanFileAdvancedAsyncWithHttpInfo($input_file, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $restrict_file_types)
+        return $this->scanCloudStorageScanAzureBlobAsyncWithHttpInfo($connection_string, $container_name, $blob_path)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -474,24 +524,21 @@ class ScanApi
     }
 
     /**
-     * Operation scanFileAdvancedAsyncWithHttpInfo
+     * Operation scanCloudStorageScanAzureBlobAsyncWithHttpInfo
      *
-     * Advanced Scan a file for viruses
+     * Scan an Azure Blob for viruses
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). (optional)
-     * @param  bool $allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). (optional)
-     * @param  bool $allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). (optional)
-     * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
-     * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
+     * @param  string $connection_string Connection string for the Azure Blob Storage Account; you can get this connection string from the Access Keys tab of the Storage Account blade in the Azure Portal. (required)
+     * @param  string $container_name Name of the Blob container within the Azure Blob Storage account (required)
+     * @param  string $blob_path Path to the blob within the container, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanFileAdvancedAsyncWithHttpInfo($input_file, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $restrict_file_types = null)
+    public function scanCloudStorageScanAzureBlobAsyncWithHttpInfo($connection_string, $container_name, $blob_path)
     {
-        $returnType = '\Swagger\Client\Model\VirusScanAdvancedResult';
-        $request = $this->scanFileAdvancedRequest($input_file, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $restrict_file_types);
+        $returnType = '\Swagger\Client\Model\CloudStorageVirusScanResult';
+        $request = $this->scanCloudStorageScanAzureBlobRequest($connection_string, $container_name, $blob_path);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -531,28 +578,37 @@ class ScanApi
     }
 
     /**
-     * Create request for operation 'scanFileAdvanced'
+     * Create request for operation 'scanCloudStorageScanAzureBlob'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). (optional)
-     * @param  bool $allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). (optional)
-     * @param  bool $allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). (optional)
-     * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
-     * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
+     * @param  string $connection_string Connection string for the Azure Blob Storage Account; you can get this connection string from the Access Keys tab of the Storage Account blade in the Azure Portal. (required)
+     * @param  string $container_name Name of the Blob container within the Azure Blob Storage account (required)
+     * @param  string $blob_path Path to the blob within the container, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function scanFileAdvancedRequest($input_file, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $restrict_file_types = null)
+    protected function scanCloudStorageScanAzureBlobRequest($connection_string, $container_name, $blob_path)
     {
-        // verify the required parameter 'input_file' is set
-        if ($input_file === null) {
+        // verify the required parameter 'connection_string' is set
+        if ($connection_string === null) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $input_file when calling scanFileAdvanced'
+                'Missing the required parameter $connection_string when calling scanCloudStorageScanAzureBlob'
+            );
+        }
+        // verify the required parameter 'container_name' is set
+        if ($container_name === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $container_name when calling scanCloudStorageScanAzureBlob'
+            );
+        }
+        // verify the required parameter 'blob_path' is set
+        if ($blob_path === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $blob_path when calling scanCloudStorageScanAzureBlob'
             );
         }
 
-        $resourcePath = '/virus/scan/file/advanced';
+        $resourcePath = '/virus/scan/cloud-storage/azure-blob/single';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -560,32 +616,19 @@ class ScanApi
         $multipart = false;
 
         // header params
-        if ($allow_executables !== null) {
-            $headerParams['allowExecutables'] = ObjectSerializer::toHeaderValue($allow_executables);
+        if ($connection_string !== null) {
+            $headerParams['connectionString'] = ObjectSerializer::toHeaderValue($connection_string);
         }
         // header params
-        if ($allow_invalid_files !== null) {
-            $headerParams['allowInvalidFiles'] = ObjectSerializer::toHeaderValue($allow_invalid_files);
+        if ($container_name !== null) {
+            $headerParams['containerName'] = ObjectSerializer::toHeaderValue($container_name);
         }
         // header params
-        if ($allow_scripts !== null) {
-            $headerParams['allowScripts'] = ObjectSerializer::toHeaderValue($allow_scripts);
-        }
-        // header params
-        if ($allow_password_protected_files !== null) {
-            $headerParams['allowPasswordProtectedFiles'] = ObjectSerializer::toHeaderValue($allow_password_protected_files);
-        }
-        // header params
-        if ($restrict_file_types !== null) {
-            $headerParams['restrictFileTypes'] = ObjectSerializer::toHeaderValue($restrict_file_types);
+        if ($blob_path !== null) {
+            $headerParams['blobPath'] = ObjectSerializer::toHeaderValue($blob_path);
         }
 
 
-        // form params
-        if ($input_file !== null) {
-            $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
-        }
         // body params
         $_tempBody = null;
 
@@ -656,37 +699,41 @@ class ScanApi
     }
 
     /**
-     * Operation scanWebsite
+     * Operation scanCloudStorageScanGcpStorageFile
      *
-     * Scan a website for malicious content and threats
+     * Scan an Google Cloud Platform (GCP) Storage file for viruses
      *
-     * @param  \Swagger\Client\Model\WebsiteScanRequest $input input (required)
+     * @param  string $bucket_name Name of the bucket in Google Cloud Storage (required)
+     * @param  string $object_name Name of the object or file in Google Cloud Storage (required)
+     * @param  \SplFileObject $json_credential_file Service Account credential for Google Cloud stored in a JSON file. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\WebsiteScanResult
+     * @return \Swagger\Client\Model\CloudStorageVirusScanResult
      */
-    public function scanWebsite($input)
+    public function scanCloudStorageScanGcpStorageFile($bucket_name, $object_name, $json_credential_file)
     {
-        list($response) = $this->scanWebsiteWithHttpInfo($input);
+        list($response) = $this->scanCloudStorageScanGcpStorageFileWithHttpInfo($bucket_name, $object_name, $json_credential_file);
         return $response;
     }
 
     /**
-     * Operation scanWebsiteWithHttpInfo
+     * Operation scanCloudStorageScanGcpStorageFileWithHttpInfo
      *
-     * Scan a website for malicious content and threats
+     * Scan an Google Cloud Platform (GCP) Storage file for viruses
      *
-     * @param  \Swagger\Client\Model\WebsiteScanRequest $input (required)
+     * @param  string $bucket_name Name of the bucket in Google Cloud Storage (required)
+     * @param  string $object_name Name of the object or file in Google Cloud Storage (required)
+     * @param  \SplFileObject $json_credential_file Service Account credential for Google Cloud stored in a JSON file. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\WebsiteScanResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\CloudStorageVirusScanResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function scanWebsiteWithHttpInfo($input)
+    public function scanCloudStorageScanGcpStorageFileWithHttpInfo($bucket_name, $object_name, $json_credential_file)
     {
-        $returnType = '\Swagger\Client\Model\WebsiteScanResult';
-        $request = $this->scanWebsiteRequest($input);
+        $returnType = '\Swagger\Client\Model\CloudStorageVirusScanResult';
+        $request = $this->scanCloudStorageScanGcpStorageFileRequest($bucket_name, $object_name, $json_credential_file);
 
         try {
             $options = $this->createHttpClientOption();
@@ -737,7 +784,7 @@ class ScanApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\WebsiteScanResult',
+                        '\Swagger\Client\Model\CloudStorageVirusScanResult',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -748,18 +795,20 @@ class ScanApi
     }
 
     /**
-     * Operation scanWebsiteAsync
+     * Operation scanCloudStorageScanGcpStorageFileAsync
      *
-     * Scan a website for malicious content and threats
+     * Scan an Google Cloud Platform (GCP) Storage file for viruses
      *
-     * @param  \Swagger\Client\Model\WebsiteScanRequest $input (required)
+     * @param  string $bucket_name Name of the bucket in Google Cloud Storage (required)
+     * @param  string $object_name Name of the object or file in Google Cloud Storage (required)
+     * @param  \SplFileObject $json_credential_file Service Account credential for Google Cloud stored in a JSON file. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanWebsiteAsync($input)
+    public function scanCloudStorageScanGcpStorageFileAsync($bucket_name, $object_name, $json_credential_file)
     {
-        return $this->scanWebsiteAsyncWithHttpInfo($input)
+        return $this->scanCloudStorageScanGcpStorageFileAsyncWithHttpInfo($bucket_name, $object_name, $json_credential_file)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -768,19 +817,21 @@ class ScanApi
     }
 
     /**
-     * Operation scanWebsiteAsyncWithHttpInfo
+     * Operation scanCloudStorageScanGcpStorageFileAsyncWithHttpInfo
      *
-     * Scan a website for malicious content and threats
+     * Scan an Google Cloud Platform (GCP) Storage file for viruses
      *
-     * @param  \Swagger\Client\Model\WebsiteScanRequest $input (required)
+     * @param  string $bucket_name Name of the bucket in Google Cloud Storage (required)
+     * @param  string $object_name Name of the object or file in Google Cloud Storage (required)
+     * @param  \SplFileObject $json_credential_file Service Account credential for Google Cloud stored in a JSON file. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanWebsiteAsyncWithHttpInfo($input)
+    public function scanCloudStorageScanGcpStorageFileAsyncWithHttpInfo($bucket_name, $object_name, $json_credential_file)
     {
-        $returnType = '\Swagger\Client\Model\WebsiteScanResult';
-        $request = $this->scanWebsiteRequest($input);
+        $returnType = '\Swagger\Client\Model\CloudStorageVirusScanResult';
+        $request = $this->scanCloudStorageScanGcpStorageFileRequest($bucket_name, $object_name, $json_credential_file);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -820,36 +871,60 @@ class ScanApi
     }
 
     /**
-     * Create request for operation 'scanWebsite'
+     * Create request for operation 'scanCloudStorageScanGcpStorageFile'
      *
-     * @param  \Swagger\Client\Model\WebsiteScanRequest $input (required)
+     * @param  string $bucket_name Name of the bucket in Google Cloud Storage (required)
+     * @param  string $object_name Name of the object or file in Google Cloud Storage (required)
+     * @param  \SplFileObject $json_credential_file Service Account credential for Google Cloud stored in a JSON file. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function scanWebsiteRequest($input)
+    protected function scanCloudStorageScanGcpStorageFileRequest($bucket_name, $object_name, $json_credential_file)
     {
-        // verify the required parameter 'input' is set
-        if ($input === null) {
+        // verify the required parameter 'bucket_name' is set
+        if ($bucket_name === null) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $input when calling scanWebsite'
+                'Missing the required parameter $bucket_name when calling scanCloudStorageScanGcpStorageFile'
+            );
+        }
+        // verify the required parameter 'object_name' is set
+        if ($object_name === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $object_name when calling scanCloudStorageScanGcpStorageFile'
+            );
+        }
+        // verify the required parameter 'json_credential_file' is set
+        if ($json_credential_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $json_credential_file when calling scanCloudStorageScanGcpStorageFile'
             );
         }
 
-        $resourcePath = '/virus/scan/website';
+        $resourcePath = '/virus/scan/cloud-storage/gcp-storage/single';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($bucket_name !== null) {
+            $headerParams['bucketName'] = ObjectSerializer::toHeaderValue($bucket_name);
+        }
+        // header params
+        if ($object_name !== null) {
+            $headerParams['objectName'] = ObjectSerializer::toHeaderValue($object_name);
+        }
 
 
+        // form params
+        if ($json_credential_file !== null) {
+            $multipart = true;
+            $formParams['jsonCredentialFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($json_credential_file), 'rb');
+        }
         // body params
         $_tempBody = null;
-        if (isset($input)) {
-            $_tempBody = $input;
-        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -858,7 +933,7 @@ class ScanApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json', 'text/json', 'application/xml', 'text/xml'],
-                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+                ['multipart/form-data']
             );
         }
 
