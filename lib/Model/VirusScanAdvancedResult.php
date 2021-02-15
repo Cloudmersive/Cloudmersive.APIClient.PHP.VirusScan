@@ -64,6 +64,7 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         'contains_script' => 'bool',
         'contains_password_protected_file' => 'bool',
         'contains_restricted_file_format' => 'bool',
+        'contains_macros' => 'bool',
         'verified_file_format' => 'string',
         'found_viruses' => '\Swagger\Client\Model\VirusFound[]'
     ];
@@ -80,6 +81,7 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         'contains_script' => null,
         'contains_password_protected_file' => null,
         'contains_restricted_file_format' => null,
+        'contains_macros' => null,
         'verified_file_format' => null,
         'found_viruses' => null
     ];
@@ -117,6 +119,7 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         'contains_script' => 'ContainsScript',
         'contains_password_protected_file' => 'ContainsPasswordProtectedFile',
         'contains_restricted_file_format' => 'ContainsRestrictedFileFormat',
+        'contains_macros' => 'ContainsMacros',
         'verified_file_format' => 'VerifiedFileFormat',
         'found_viruses' => 'FoundViruses'
     ];
@@ -133,6 +136,7 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         'contains_script' => 'setContainsScript',
         'contains_password_protected_file' => 'setContainsPasswordProtectedFile',
         'contains_restricted_file_format' => 'setContainsRestrictedFileFormat',
+        'contains_macros' => 'setContainsMacros',
         'verified_file_format' => 'setVerifiedFileFormat',
         'found_viruses' => 'setFoundViruses'
     ];
@@ -149,6 +153,7 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         'contains_script' => 'getContainsScript',
         'contains_password_protected_file' => 'getContainsPasswordProtectedFile',
         'contains_restricted_file_format' => 'getContainsRestrictedFileFormat',
+        'contains_macros' => 'getContainsMacros',
         'verified_file_format' => 'getVerifiedFileFormat',
         'found_viruses' => 'getFoundViruses'
     ];
@@ -219,6 +224,7 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         $this->container['contains_script'] = isset($data['contains_script']) ? $data['contains_script'] : null;
         $this->container['contains_password_protected_file'] = isset($data['contains_password_protected_file']) ? $data['contains_password_protected_file'] : null;
         $this->container['contains_restricted_file_format'] = isset($data['contains_restricted_file_format']) ? $data['contains_restricted_file_format'] : null;
+        $this->container['contains_macros'] = isset($data['contains_macros']) ? $data['contains_macros'] : null;
         $this->container['verified_file_format'] = isset($data['verified_file_format']) ? $data['verified_file_format'] : null;
         $this->container['found_viruses'] = isset($data['found_viruses']) ? $data['found_viruses'] : null;
     }
@@ -388,6 +394,30 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
     public function setContainsRestrictedFileFormat($contains_restricted_file_format)
     {
         $this->container['contains_restricted_file_format'] = $contains_restricted_file_format;
+
+        return $this;
+    }
+
+    /**
+     * Gets contains_macros
+     *
+     * @return bool
+     */
+    public function getContainsMacros()
+    {
+        return $this->container['contains_macros'];
+    }
+
+    /**
+     * Sets contains_macros
+     *
+     * @param bool $contains_macros True if the uploaded file contains embedded Macros of other embedded threats within the document, which can be a significant risk factor
+     *
+     * @return $this
+     */
+    public function setContainsMacros($contains_macros)
+    {
+        $this->container['contains_macros'] = $contains_macros;
 
         return $this;
     }

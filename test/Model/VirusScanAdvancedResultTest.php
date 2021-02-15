@@ -120,6 +120,13 @@ class VirusScanAdvancedResultTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "contains_macros"
+     */
+    public function testPropertyContainsMacros()
+    {
+    }
+
+    /**
      * Test attribute "verified_file_format"
      */
     public function testPropertyVerifiedFileFormat()
