@@ -82,6 +82,16 @@ class ScanCloudStorageApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for scanCloudStorageScanAwsS3FileAdvanced
+     *
+     * Advanced Scan an AWS S3 file for viruses.
+     *
+     */
+    public function testScanCloudStorageScanAwsS3FileAdvanced()
+    {
+    }
+
+    /**
      * Test case for scanCloudStorageScanAzureBlob
      *
      * Scan an Azure Blob for viruses.
@@ -92,12 +102,32 @@ class ScanCloudStorageApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for scanCloudStorageScanAzureBlobAdvanced
+     *
+     * Advanced Scan an Azure Blob for viruses.
+     *
+     */
+    public function testScanCloudStorageScanAzureBlobAdvanced()
+    {
+    }
+
+    /**
      * Test case for scanCloudStorageScanGcpStorageFile
      *
      * Scan an Google Cloud Platform (GCP) Storage file for viruses.
      *
      */
     public function testScanCloudStorageScanGcpStorageFile()
+    {
+    }
+
+    /**
+     * Test case for scanCloudStorageScanGcpStorageFileAdvanced
+     *
+     * Advanced Scan an Google Cloud Platform (GCP) Storage file for viruses.
+     *
+     */
+    public function testScanCloudStorageScanGcpStorageFileAdvanced()
     {
     }
 }
