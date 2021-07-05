@@ -65,6 +65,7 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         'contains_password_protected_file' => 'bool',
         'contains_restricted_file_format' => 'bool',
         'contains_macros' => 'bool',
+        'contains_xml_external_entities' => 'bool',
         'verified_file_format' => 'string',
         'found_viruses' => '\Swagger\Client\Model\VirusFound[]'
     ];
@@ -82,6 +83,7 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         'contains_password_protected_file' => null,
         'contains_restricted_file_format' => null,
         'contains_macros' => null,
+        'contains_xml_external_entities' => null,
         'verified_file_format' => null,
         'found_viruses' => null
     ];
@@ -120,6 +122,7 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         'contains_password_protected_file' => 'ContainsPasswordProtectedFile',
         'contains_restricted_file_format' => 'ContainsRestrictedFileFormat',
         'contains_macros' => 'ContainsMacros',
+        'contains_xml_external_entities' => 'ContainsXmlExternalEntities',
         'verified_file_format' => 'VerifiedFileFormat',
         'found_viruses' => 'FoundViruses'
     ];
@@ -137,6 +140,7 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         'contains_password_protected_file' => 'setContainsPasswordProtectedFile',
         'contains_restricted_file_format' => 'setContainsRestrictedFileFormat',
         'contains_macros' => 'setContainsMacros',
+        'contains_xml_external_entities' => 'setContainsXmlExternalEntities',
         'verified_file_format' => 'setVerifiedFileFormat',
         'found_viruses' => 'setFoundViruses'
     ];
@@ -154,6 +158,7 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         'contains_password_protected_file' => 'getContainsPasswordProtectedFile',
         'contains_restricted_file_format' => 'getContainsRestrictedFileFormat',
         'contains_macros' => 'getContainsMacros',
+        'contains_xml_external_entities' => 'getContainsXmlExternalEntities',
         'verified_file_format' => 'getVerifiedFileFormat',
         'found_viruses' => 'getFoundViruses'
     ];
@@ -225,6 +230,7 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         $this->container['contains_password_protected_file'] = isset($data['contains_password_protected_file']) ? $data['contains_password_protected_file'] : null;
         $this->container['contains_restricted_file_format'] = isset($data['contains_restricted_file_format']) ? $data['contains_restricted_file_format'] : null;
         $this->container['contains_macros'] = isset($data['contains_macros']) ? $data['contains_macros'] : null;
+        $this->container['contains_xml_external_entities'] = isset($data['contains_xml_external_entities']) ? $data['contains_xml_external_entities'] : null;
         $this->container['verified_file_format'] = isset($data['verified_file_format']) ? $data['verified_file_format'] : null;
         $this->container['found_viruses'] = isset($data['found_viruses']) ? $data['found_viruses'] : null;
     }
@@ -418,6 +424,30 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
     public function setContainsMacros($contains_macros)
     {
         $this->container['contains_macros'] = $contains_macros;
+
+        return $this;
+    }
+
+    /**
+     * Gets contains_xml_external_entities
+     *
+     * @return bool
+     */
+    public function getContainsXmlExternalEntities()
+    {
+        return $this->container['contains_xml_external_entities'];
+    }
+
+    /**
+     * Sets contains_xml_external_entities
+     *
+     * @param bool $contains_xml_external_entities True if the uploaded file contains embedded XML External Entity threats of other embedded threats within the document, which can be a significant risk factor
+     *
+     * @return $this
+     */
+    public function setContainsXmlExternalEntities($contains_xml_external_entities)
+    {
+        $this->container['contains_xml_external_entities'] = $contains_xml_external_entities;
 
         return $this;
     }

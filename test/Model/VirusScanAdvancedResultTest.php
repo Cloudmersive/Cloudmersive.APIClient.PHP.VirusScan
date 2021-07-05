@@ -127,6 +127,13 @@ class VirusScanAdvancedResultTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "contains_xml_external_entities"
+     */
+    public function testPropertyContainsXmlExternalEntities()
+    {
+    }
+
+    /**
      * Test attribute "verified_file_format"
      */
     public function testPropertyVerifiedFileFormat()
