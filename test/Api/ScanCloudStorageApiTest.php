@@ -130,4 +130,24 @@ class ScanCloudStorageApiTest extends \PHPUnit_Framework_TestCase
     public function testScanCloudStorageScanGcpStorageFileAdvanced()
     {
     }
+
+    /**
+     * Test case for scanCloudStorageScanSharePointOnlineFile
+     *
+     * Virus Scan a file in a SharePoint Online Site Drive.
+     *
+     */
+    public function testScanCloudStorageScanSharePointOnlineFile()
+    {
+    }
+
+    /**
+     * Test case for scanCloudStorageScanSharePointOnlineFileAdvanced
+     *
+     * Advanced Virus Scan a file in a SharePoint Online Site Drive.
+     *
+     */
+    public function testScanCloudStorageScanSharePointOnlineFileAdvanced()
+    {
+    }
 }
