@@ -2102,14 +2102,15 @@ class ScanCloudStorageApi
      * @param  string $site_id Site ID (GUID) of the SharePoint site you wish to retrieve the file from (required)
      * @param  string $file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; (required)
      * @param  string $tenant_id Optional; Tenant ID of your Azure Active Directory (optional)
+     * @param  string $item_id SharePoint itemID, such as a DriveItem Id (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\CloudStorageVirusScanResult
      */
-    public function scanCloudStorageScanSharePointOnlineFile($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id = null)
+    public function scanCloudStorageScanSharePointOnlineFile($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id = null, $item_id = null)
     {
-        list($response) = $this->scanCloudStorageScanSharePointOnlineFileWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id);
+        list($response) = $this->scanCloudStorageScanSharePointOnlineFileWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id, $item_id);
         return $response;
     }
 
@@ -2124,15 +2125,16 @@ class ScanCloudStorageApi
      * @param  string $site_id Site ID (GUID) of the SharePoint site you wish to retrieve the file from (required)
      * @param  string $file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; (required)
      * @param  string $tenant_id Optional; Tenant ID of your Azure Active Directory (optional)
+     * @param  string $item_id SharePoint itemID, such as a DriveItem Id (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\CloudStorageVirusScanResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function scanCloudStorageScanSharePointOnlineFileWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id = null)
+    public function scanCloudStorageScanSharePointOnlineFileWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id = null, $item_id = null)
     {
         $returnType = '\Swagger\Client\Model\CloudStorageVirusScanResult';
-        $request = $this->scanCloudStorageScanSharePointOnlineFileRequest($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id);
+        $request = $this->scanCloudStorageScanSharePointOnlineFileRequest($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id, $item_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2204,13 +2206,14 @@ class ScanCloudStorageApi
      * @param  string $site_id Site ID (GUID) of the SharePoint site you wish to retrieve the file from (required)
      * @param  string $file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; (required)
      * @param  string $tenant_id Optional; Tenant ID of your Azure Active Directory (optional)
+     * @param  string $item_id SharePoint itemID, such as a DriveItem Id (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanCloudStorageScanSharePointOnlineFileAsync($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id = null)
+    public function scanCloudStorageScanSharePointOnlineFileAsync($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id = null, $item_id = null)
     {
-        return $this->scanCloudStorageScanSharePointOnlineFileAsyncWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id)
+        return $this->scanCloudStorageScanSharePointOnlineFileAsyncWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id, $item_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2229,14 +2232,15 @@ class ScanCloudStorageApi
      * @param  string $site_id Site ID (GUID) of the SharePoint site you wish to retrieve the file from (required)
      * @param  string $file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; (required)
      * @param  string $tenant_id Optional; Tenant ID of your Azure Active Directory (optional)
+     * @param  string $item_id SharePoint itemID, such as a DriveItem Id (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanCloudStorageScanSharePointOnlineFileAsyncWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id = null)
+    public function scanCloudStorageScanSharePointOnlineFileAsyncWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id = null, $item_id = null)
     {
         $returnType = '\Swagger\Client\Model\CloudStorageVirusScanResult';
-        $request = $this->scanCloudStorageScanSharePointOnlineFileRequest($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id);
+        $request = $this->scanCloudStorageScanSharePointOnlineFileRequest($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id, $item_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2284,11 +2288,12 @@ class ScanCloudStorageApi
      * @param  string $site_id Site ID (GUID) of the SharePoint site you wish to retrieve the file from (required)
      * @param  string $file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; (required)
      * @param  string $tenant_id Optional; Tenant ID of your Azure Active Directory (optional)
+     * @param  string $item_id SharePoint itemID, such as a DriveItem Id (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function scanCloudStorageScanSharePointOnlineFileRequest($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id = null)
+    protected function scanCloudStorageScanSharePointOnlineFileRequest($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id = null, $item_id = null)
     {
         // verify the required parameter 'client_id' is set
         if ($client_id === null) {
@@ -2351,6 +2356,10 @@ class ScanCloudStorageApi
         // header params
         if ($file_path !== null) {
             $headerParams['filePath'] = ObjectSerializer::toHeaderValue($file_path);
+        }
+        // header params
+        if ($item_id !== null) {
+            $headerParams['itemID'] = ObjectSerializer::toHeaderValue($item_id);
         }
 
 
@@ -2432,8 +2441,9 @@ class ScanCloudStorageApi
      * @param  string $client_secret Client Secret access credentials; see description above for instructions on how to get the Client Secret from the Azure Active Directory portal (required)
      * @param  string $sharepoint_domain_name SharePoint Online domain name, such as mydomain.sharepoint.com (required)
      * @param  string $site_id Site ID (GUID) of the SharePoint site you wish to retrieve the file from (required)
-     * @param  string $file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; (required)
      * @param  string $tenant_id Optional; Tenant ID of your Azure Active Directory (optional)
+     * @param  string $file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; (optional)
+     * @param  string $item_id SharePoint itemID, such as a DriveItem Id (optional)
      * @param  bool $allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). (optional)
      * @param  bool $allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). (optional)
      * @param  bool $allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). (optional)
@@ -2446,9 +2456,9 @@ class ScanCloudStorageApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\CloudStorageAdvancedVirusScanResult
      */
-    public function scanCloudStorageScanSharePointOnlineFileAdvanced($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    public function scanCloudStorageScanSharePointOnlineFileAdvanced($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id = null, $file_path = null, $item_id = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
     {
-        list($response) = $this->scanCloudStorageScanSharePointOnlineFileAdvancedWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types);
+        list($response) = $this->scanCloudStorageScanSharePointOnlineFileAdvancedWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id, $file_path, $item_id, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types);
         return $response;
     }
 
@@ -2461,8 +2471,9 @@ class ScanCloudStorageApi
      * @param  string $client_secret Client Secret access credentials; see description above for instructions on how to get the Client Secret from the Azure Active Directory portal (required)
      * @param  string $sharepoint_domain_name SharePoint Online domain name, such as mydomain.sharepoint.com (required)
      * @param  string $site_id Site ID (GUID) of the SharePoint site you wish to retrieve the file from (required)
-     * @param  string $file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; (required)
      * @param  string $tenant_id Optional; Tenant ID of your Azure Active Directory (optional)
+     * @param  string $file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; (optional)
+     * @param  string $item_id SharePoint itemID, such as a DriveItem Id (optional)
      * @param  bool $allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). (optional)
      * @param  bool $allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). (optional)
      * @param  bool $allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). (optional)
@@ -2475,10 +2486,10 @@ class ScanCloudStorageApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\CloudStorageAdvancedVirusScanResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function scanCloudStorageScanSharePointOnlineFileAdvancedWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    public function scanCloudStorageScanSharePointOnlineFileAdvancedWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id = null, $file_path = null, $item_id = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
     {
         $returnType = '\Swagger\Client\Model\CloudStorageAdvancedVirusScanResult';
-        $request = $this->scanCloudStorageScanSharePointOnlineFileAdvancedRequest($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types);
+        $request = $this->scanCloudStorageScanSharePointOnlineFileAdvancedRequest($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id, $file_path, $item_id, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2548,8 +2559,9 @@ class ScanCloudStorageApi
      * @param  string $client_secret Client Secret access credentials; see description above for instructions on how to get the Client Secret from the Azure Active Directory portal (required)
      * @param  string $sharepoint_domain_name SharePoint Online domain name, such as mydomain.sharepoint.com (required)
      * @param  string $site_id Site ID (GUID) of the SharePoint site you wish to retrieve the file from (required)
-     * @param  string $file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; (required)
      * @param  string $tenant_id Optional; Tenant ID of your Azure Active Directory (optional)
+     * @param  string $file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; (optional)
+     * @param  string $item_id SharePoint itemID, such as a DriveItem Id (optional)
      * @param  bool $allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). (optional)
      * @param  bool $allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). (optional)
      * @param  bool $allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). (optional)
@@ -2561,9 +2573,9 @@ class ScanCloudStorageApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanCloudStorageScanSharePointOnlineFileAdvancedAsync($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    public function scanCloudStorageScanSharePointOnlineFileAdvancedAsync($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id = null, $file_path = null, $item_id = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
     {
-        return $this->scanCloudStorageScanSharePointOnlineFileAdvancedAsyncWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types)
+        return $this->scanCloudStorageScanSharePointOnlineFileAdvancedAsyncWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id, $file_path, $item_id, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2580,8 +2592,9 @@ class ScanCloudStorageApi
      * @param  string $client_secret Client Secret access credentials; see description above for instructions on how to get the Client Secret from the Azure Active Directory portal (required)
      * @param  string $sharepoint_domain_name SharePoint Online domain name, such as mydomain.sharepoint.com (required)
      * @param  string $site_id Site ID (GUID) of the SharePoint site you wish to retrieve the file from (required)
-     * @param  string $file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; (required)
      * @param  string $tenant_id Optional; Tenant ID of your Azure Active Directory (optional)
+     * @param  string $file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; (optional)
+     * @param  string $item_id SharePoint itemID, such as a DriveItem Id (optional)
      * @param  bool $allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). (optional)
      * @param  bool $allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). (optional)
      * @param  bool $allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). (optional)
@@ -2593,10 +2606,10 @@ class ScanCloudStorageApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanCloudStorageScanSharePointOnlineFileAdvancedAsyncWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    public function scanCloudStorageScanSharePointOnlineFileAdvancedAsyncWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id = null, $file_path = null, $item_id = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
     {
         $returnType = '\Swagger\Client\Model\CloudStorageAdvancedVirusScanResult';
-        $request = $this->scanCloudStorageScanSharePointOnlineFileAdvancedRequest($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types);
+        $request = $this->scanCloudStorageScanSharePointOnlineFileAdvancedRequest($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id, $file_path, $item_id, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2642,8 +2655,9 @@ class ScanCloudStorageApi
      * @param  string $client_secret Client Secret access credentials; see description above for instructions on how to get the Client Secret from the Azure Active Directory portal (required)
      * @param  string $sharepoint_domain_name SharePoint Online domain name, such as mydomain.sharepoint.com (required)
      * @param  string $site_id Site ID (GUID) of the SharePoint site you wish to retrieve the file from (required)
-     * @param  string $file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; (required)
      * @param  string $tenant_id Optional; Tenant ID of your Azure Active Directory (optional)
+     * @param  string $file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; (optional)
+     * @param  string $item_id SharePoint itemID, such as a DriveItem Id (optional)
      * @param  bool $allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). (optional)
      * @param  bool $allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). (optional)
      * @param  bool $allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). (optional)
@@ -2655,7 +2669,7 @@ class ScanCloudStorageApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function scanCloudStorageScanSharePointOnlineFileAdvancedRequest($client_id, $client_secret, $sharepoint_domain_name, $site_id, $file_path, $tenant_id = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    protected function scanCloudStorageScanSharePointOnlineFileAdvancedRequest($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id = null, $file_path = null, $item_id = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
     {
         // verify the required parameter 'client_id' is set
         if ($client_id === null) {
@@ -2679,12 +2693,6 @@ class ScanCloudStorageApi
         if ($site_id === null) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $site_id when calling scanCloudStorageScanSharePointOnlineFileAdvanced'
-            );
-        }
-        // verify the required parameter 'file_path' is set
-        if ($file_path === null) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $file_path when calling scanCloudStorageScanSharePointOnlineFileAdvanced'
             );
         }
 
@@ -2718,6 +2726,10 @@ class ScanCloudStorageApi
         // header params
         if ($file_path !== null) {
             $headerParams['filePath'] = ObjectSerializer::toHeaderValue($file_path);
+        }
+        // header params
+        if ($item_id !== null) {
+            $headerParams['itemID'] = ObjectSerializer::toHeaderValue($item_id);
         }
         // header params
         if ($allow_executables !== null) {
