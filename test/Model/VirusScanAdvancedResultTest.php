@@ -134,6 +134,20 @@ class VirusScanAdvancedResultTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "contains_insecure_deserialization"
+     */
+    public function testPropertyContainsInsecureDeserialization()
+    {
+    }
+
+    /**
+     * Test attribute "contains_html"
+     */
+    public function testPropertyContainsHtml()
+    {
+    }
+
+    /**
      * Test attribute "verified_file_format"
      */
     public function testPropertyVerifiedFileFormat()
@@ -144,6 +158,13 @@ class VirusScanAdvancedResultTest extends \PHPUnit_Framework_TestCase
      * Test attribute "found_viruses"
      */
     public function testPropertyFoundViruses()
+    {
+    }
+
+    /**
+     * Test attribute "content_information"
+     */
+    public function testPropertyContentInformation()
     {
     }
 }

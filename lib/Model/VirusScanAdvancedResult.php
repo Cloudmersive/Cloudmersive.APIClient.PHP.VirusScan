@@ -66,8 +66,11 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         'contains_restricted_file_format' => 'bool',
         'contains_macros' => 'bool',
         'contains_xml_external_entities' => 'bool',
+        'contains_insecure_deserialization' => 'bool',
+        'contains_html' => 'bool',
         'verified_file_format' => 'string',
-        'found_viruses' => '\Swagger\Client\Model\VirusFound[]'
+        'found_viruses' => '\Swagger\Client\Model\VirusFound[]',
+        'content_information' => '\Swagger\Client\Model\AdditionalAdvancedScanInformation'
     ];
 
     /**
@@ -84,8 +87,11 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         'contains_restricted_file_format' => null,
         'contains_macros' => null,
         'contains_xml_external_entities' => null,
+        'contains_insecure_deserialization' => null,
+        'contains_html' => null,
         'verified_file_format' => null,
-        'found_viruses' => null
+        'found_viruses' => null,
+        'content_information' => null
     ];
 
     /**
@@ -123,8 +129,11 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         'contains_restricted_file_format' => 'ContainsRestrictedFileFormat',
         'contains_macros' => 'ContainsMacros',
         'contains_xml_external_entities' => 'ContainsXmlExternalEntities',
+        'contains_insecure_deserialization' => 'ContainsInsecureDeserialization',
+        'contains_html' => 'ContainsHtml',
         'verified_file_format' => 'VerifiedFileFormat',
-        'found_viruses' => 'FoundViruses'
+        'found_viruses' => 'FoundViruses',
+        'content_information' => 'ContentInformation'
     ];
 
     /**
@@ -141,8 +150,11 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         'contains_restricted_file_format' => 'setContainsRestrictedFileFormat',
         'contains_macros' => 'setContainsMacros',
         'contains_xml_external_entities' => 'setContainsXmlExternalEntities',
+        'contains_insecure_deserialization' => 'setContainsInsecureDeserialization',
+        'contains_html' => 'setContainsHtml',
         'verified_file_format' => 'setVerifiedFileFormat',
-        'found_viruses' => 'setFoundViruses'
+        'found_viruses' => 'setFoundViruses',
+        'content_information' => 'setContentInformation'
     ];
 
     /**
@@ -159,8 +171,11 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         'contains_restricted_file_format' => 'getContainsRestrictedFileFormat',
         'contains_macros' => 'getContainsMacros',
         'contains_xml_external_entities' => 'getContainsXmlExternalEntities',
+        'contains_insecure_deserialization' => 'getContainsInsecureDeserialization',
+        'contains_html' => 'getContainsHtml',
         'verified_file_format' => 'getVerifiedFileFormat',
-        'found_viruses' => 'getFoundViruses'
+        'found_viruses' => 'getFoundViruses',
+        'content_information' => 'getContentInformation'
     ];
 
     /**
@@ -231,8 +246,11 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
         $this->container['contains_restricted_file_format'] = isset($data['contains_restricted_file_format']) ? $data['contains_restricted_file_format'] : null;
         $this->container['contains_macros'] = isset($data['contains_macros']) ? $data['contains_macros'] : null;
         $this->container['contains_xml_external_entities'] = isset($data['contains_xml_external_entities']) ? $data['contains_xml_external_entities'] : null;
+        $this->container['contains_insecure_deserialization'] = isset($data['contains_insecure_deserialization']) ? $data['contains_insecure_deserialization'] : null;
+        $this->container['contains_html'] = isset($data['contains_html']) ? $data['contains_html'] : null;
         $this->container['verified_file_format'] = isset($data['verified_file_format']) ? $data['verified_file_format'] : null;
         $this->container['found_viruses'] = isset($data['found_viruses']) ? $data['found_viruses'] : null;
+        $this->container['content_information'] = isset($data['content_information']) ? $data['content_information'] : null;
     }
 
     /**
@@ -453,6 +471,54 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets contains_insecure_deserialization
+     *
+     * @return bool
+     */
+    public function getContainsInsecureDeserialization()
+    {
+        return $this->container['contains_insecure_deserialization'];
+    }
+
+    /**
+     * Sets contains_insecure_deserialization
+     *
+     * @param bool $contains_insecure_deserialization True if the uploaded file contains embedded Insecure Deserialization threats of other embedded threats within the document, which can be a significant risk factor
+     *
+     * @return $this
+     */
+    public function setContainsInsecureDeserialization($contains_insecure_deserialization)
+    {
+        $this->container['contains_insecure_deserialization'] = $contains_insecure_deserialization;
+
+        return $this;
+    }
+
+    /**
+     * Gets contains_html
+     *
+     * @return bool
+     */
+    public function getContainsHtml()
+    {
+        return $this->container['contains_html'];
+    }
+
+    /**
+     * Sets contains_html
+     *
+     * @param bool $contains_html True if the uploaded file contains HTML, which can be a significant risk factor
+     *
+     * @return $this
+     */
+    public function setContainsHtml($contains_html)
+    {
+        $this->container['contains_html'] = $contains_html;
+
+        return $this;
+    }
+
+    /**
      * Gets verified_file_format
      *
      * @return string
@@ -496,6 +562,30 @@ class VirusScanAdvancedResult implements ModelInterface, ArrayAccess
     public function setFoundViruses($found_viruses)
     {
         $this->container['found_viruses'] = $found_viruses;
+
+        return $this;
+    }
+
+    /**
+     * Gets content_information
+     *
+     * @return \Swagger\Client\Model\AdditionalAdvancedScanInformation
+     */
+    public function getContentInformation()
+    {
+        return $this->container['content_information'];
+    }
+
+    /**
+     * Sets content_information
+     *
+     * @param \Swagger\Client\Model\AdditionalAdvancedScanInformation $content_information Contains additional non-threat content verification information
+     *
+     * @return $this
+     */
+    public function setContentInformation($content_information)
+    {
+        $this->container['content_information'] = $content_information;
 
         return $this;
     }

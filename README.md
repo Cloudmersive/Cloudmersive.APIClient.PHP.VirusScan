@@ -4,7 +4,7 @@ The Cloudmersive Virus Scan API lets you scan files and content for viruses and 
 [Cloudmersive Virus Scan API](https://www.cloudmersive.com/virus-api) provides advanced virus scanning capabilities.
 
 - API version: v1
-- Package version: 1.5.3
+- Package version: 1.5.4
 
 
 ## Requirements
@@ -101,6 +101,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AdditionalAdvancedScanInformation](docs/Model/AdditionalAdvancedScanInformation.md)
  - [CloudStorageAdvancedVirusScanResult](docs/Model/CloudStorageAdvancedVirusScanResult.md)
  - [CloudStorageVirusFound](docs/Model/CloudStorageVirusFound.md)
  - [CloudStorageVirusScanResult](docs/Model/CloudStorageVirusScanResult.md)
