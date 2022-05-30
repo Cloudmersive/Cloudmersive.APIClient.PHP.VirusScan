@@ -160,4 +160,11 @@ class CloudStorageAdvancedVirusScanResultTest extends \PHPUnit_Framework_TestCas
     public function testPropertyFileSize()
     {
     }
+
+    /**
+     * Test attribute "content_information"
+     */
+    public function testPropertyContentInformation()
+    {
+    }
 }

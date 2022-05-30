@@ -69,7 +69,8 @@ class CloudStorageAdvancedVirusScanResult implements ModelInterface, ArrayAccess
         'verified_file_format' => 'string',
         'found_viruses' => '\Swagger\Client\Model\CloudStorageVirusFound[]',
         'error_detailed_description' => 'string',
-        'file_size' => 'int'
+        'file_size' => 'int',
+        'content_information' => '\Swagger\Client\Model\AdditionalAdvancedScanInformation'
     ];
 
     /**
@@ -89,7 +90,8 @@ class CloudStorageAdvancedVirusScanResult implements ModelInterface, ArrayAccess
         'verified_file_format' => null,
         'found_viruses' => null,
         'error_detailed_description' => null,
-        'file_size' => 'int64'
+        'file_size' => 'int64',
+        'content_information' => null
     ];
 
     /**
@@ -130,7 +132,8 @@ class CloudStorageAdvancedVirusScanResult implements ModelInterface, ArrayAccess
         'verified_file_format' => 'VerifiedFileFormat',
         'found_viruses' => 'FoundViruses',
         'error_detailed_description' => 'ErrorDetailedDescription',
-        'file_size' => 'FileSize'
+        'file_size' => 'FileSize',
+        'content_information' => 'ContentInformation'
     ];
 
     /**
@@ -150,7 +153,8 @@ class CloudStorageAdvancedVirusScanResult implements ModelInterface, ArrayAccess
         'verified_file_format' => 'setVerifiedFileFormat',
         'found_viruses' => 'setFoundViruses',
         'error_detailed_description' => 'setErrorDetailedDescription',
-        'file_size' => 'setFileSize'
+        'file_size' => 'setFileSize',
+        'content_information' => 'setContentInformation'
     ];
 
     /**
@@ -170,7 +174,8 @@ class CloudStorageAdvancedVirusScanResult implements ModelInterface, ArrayAccess
         'verified_file_format' => 'getVerifiedFileFormat',
         'found_viruses' => 'getFoundViruses',
         'error_detailed_description' => 'getErrorDetailedDescription',
-        'file_size' => 'getFileSize'
+        'file_size' => 'getFileSize',
+        'content_information' => 'getContentInformation'
     ];
 
     /**
@@ -245,6 +250,7 @@ class CloudStorageAdvancedVirusScanResult implements ModelInterface, ArrayAccess
         $this->container['found_viruses'] = isset($data['found_viruses']) ? $data['found_viruses'] : null;
         $this->container['error_detailed_description'] = isset($data['error_detailed_description']) ? $data['error_detailed_description'] : null;
         $this->container['file_size'] = isset($data['file_size']) ? $data['file_size'] : null;
+        $this->container['content_information'] = isset($data['content_information']) ? $data['content_information'] : null;
     }
 
     /**
@@ -556,6 +562,30 @@ class CloudStorageAdvancedVirusScanResult implements ModelInterface, ArrayAccess
     public function setFileSize($file_size)
     {
         $this->container['file_size'] = $file_size;
+
+        return $this;
+    }
+
+    /**
+     * Gets content_information
+     *
+     * @return \Swagger\Client\Model\AdditionalAdvancedScanInformation
+     */
+    public function getContentInformation()
+    {
+        return $this->container['content_information'];
+    }
+
+    /**
+     * Sets content_information
+     *
+     * @param \Swagger\Client\Model\AdditionalAdvancedScanInformation $content_information Contains additional non-threat content verification information
+     *
+     * @return $this
+     */
+    public function setContentInformation($content_information)
+    {
+        $this->container['content_information'] = $content_information;
 
         return $this;
     }

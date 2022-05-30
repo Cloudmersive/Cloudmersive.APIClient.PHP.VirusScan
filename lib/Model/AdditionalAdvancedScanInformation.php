@@ -59,7 +59,8 @@ class AdditionalAdvancedScanInformation implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'contains_json' => 'bool',
-        'contains_xml' => 'bool'
+        'contains_xml' => 'bool',
+        'contains_image' => 'bool'
     ];
 
     /**
@@ -69,7 +70,8 @@ class AdditionalAdvancedScanInformation implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'contains_json' => null,
-        'contains_xml' => null
+        'contains_xml' => null,
+        'contains_image' => null
     ];
 
     /**
@@ -100,7 +102,8 @@ class AdditionalAdvancedScanInformation implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'contains_json' => 'ContainsJSON',
-        'contains_xml' => 'ContainsXML'
+        'contains_xml' => 'ContainsXML',
+        'contains_image' => 'ContainsImage'
     ];
 
     /**
@@ -110,7 +113,8 @@ class AdditionalAdvancedScanInformation implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'contains_json' => 'setContainsJson',
-        'contains_xml' => 'setContainsXml'
+        'contains_xml' => 'setContainsXml',
+        'contains_image' => 'setContainsImage'
     ];
 
     /**
@@ -120,7 +124,8 @@ class AdditionalAdvancedScanInformation implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'contains_json' => 'getContainsJson',
-        'contains_xml' => 'getContainsXml'
+        'contains_xml' => 'getContainsXml',
+        'contains_image' => 'getContainsImage'
     ];
 
     /**
@@ -185,6 +190,7 @@ class AdditionalAdvancedScanInformation implements ModelInterface, ArrayAccess
     {
         $this->container['contains_json'] = isset($data['contains_json']) ? $data['contains_json'] : null;
         $this->container['contains_xml'] = isset($data['contains_xml']) ? $data['contains_xml'] : null;
+        $this->container['contains_image'] = isset($data['contains_image']) ? $data['contains_image'] : null;
     }
 
     /**
@@ -256,6 +262,30 @@ class AdditionalAdvancedScanInformation implements ModelInterface, ArrayAccess
     public function setContainsXml($contains_xml)
     {
         $this->container['contains_xml'] = $contains_xml;
+
+        return $this;
+    }
+
+    /**
+     * Gets contains_image
+     *
+     * @return bool
+     */
+    public function getContainsImage()
+    {
+        return $this->container['contains_image'];
+    }
+
+    /**
+     * Sets contains_image
+     *
+     * @param bool $contains_image True if the input file contains an image
+     *
+     * @return $this
+     */
+    public function setContainsImage($contains_image)
+    {
+        $this->container['contains_image'] = $contains_image;
 
         return $this;
     }

@@ -111,4 +111,11 @@ class CloudStorageVirusScanResultTest extends \PHPUnit_Framework_TestCase
     public function testPropertyFileSize()
     {
     }
+
+    /**
+     * Test attribute "contains_content_moderation_rejection"
+     */
+    public function testPropertyContainsContentModerationRejection()
+    {
+    }
 }

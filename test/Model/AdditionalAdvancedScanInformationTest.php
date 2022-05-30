@@ -90,4 +90,11 @@ class AdditionalAdvancedScanInformationTest extends \PHPUnit_Framework_TestCase
     public function testPropertyContainsXml()
     {
     }
+
+    /**
+     * Test attribute "contains_image"
+     */
+    public function testPropertyContainsImage()
+    {
+    }
 }

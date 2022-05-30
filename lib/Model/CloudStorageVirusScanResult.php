@@ -62,7 +62,8 @@ class CloudStorageVirusScanResult implements ModelInterface, ArrayAccess
         'clean_result' => 'bool',
         'found_viruses' => '\Swagger\Client\Model\CloudStorageVirusFound[]',
         'error_detailed_description' => 'string',
-        'file_size' => 'int'
+        'file_size' => 'int',
+        'contains_content_moderation_rejection' => 'bool'
     ];
 
     /**
@@ -75,7 +76,8 @@ class CloudStorageVirusScanResult implements ModelInterface, ArrayAccess
         'clean_result' => null,
         'found_viruses' => null,
         'error_detailed_description' => null,
-        'file_size' => 'int64'
+        'file_size' => 'int64',
+        'contains_content_moderation_rejection' => null
     ];
 
     /**
@@ -109,7 +111,8 @@ class CloudStorageVirusScanResult implements ModelInterface, ArrayAccess
         'clean_result' => 'CleanResult',
         'found_viruses' => 'FoundViruses',
         'error_detailed_description' => 'ErrorDetailedDescription',
-        'file_size' => 'FileSize'
+        'file_size' => 'FileSize',
+        'contains_content_moderation_rejection' => 'ContainsContentModerationRejection'
     ];
 
     /**
@@ -122,7 +125,8 @@ class CloudStorageVirusScanResult implements ModelInterface, ArrayAccess
         'clean_result' => 'setCleanResult',
         'found_viruses' => 'setFoundViruses',
         'error_detailed_description' => 'setErrorDetailedDescription',
-        'file_size' => 'setFileSize'
+        'file_size' => 'setFileSize',
+        'contains_content_moderation_rejection' => 'setContainsContentModerationRejection'
     ];
 
     /**
@@ -135,7 +139,8 @@ class CloudStorageVirusScanResult implements ModelInterface, ArrayAccess
         'clean_result' => 'getCleanResult',
         'found_viruses' => 'getFoundViruses',
         'error_detailed_description' => 'getErrorDetailedDescription',
-        'file_size' => 'getFileSize'
+        'file_size' => 'getFileSize',
+        'contains_content_moderation_rejection' => 'getContainsContentModerationRejection'
     ];
 
     /**
@@ -203,6 +208,7 @@ class CloudStorageVirusScanResult implements ModelInterface, ArrayAccess
         $this->container['found_viruses'] = isset($data['found_viruses']) ? $data['found_viruses'] : null;
         $this->container['error_detailed_description'] = isset($data['error_detailed_description']) ? $data['error_detailed_description'] : null;
         $this->container['file_size'] = isset($data['file_size']) ? $data['file_size'] : null;
+        $this->container['contains_content_moderation_rejection'] = isset($data['contains_content_moderation_rejection']) ? $data['contains_content_moderation_rejection'] : null;
     }
 
     /**
@@ -346,6 +352,30 @@ class CloudStorageVirusScanResult implements ModelInterface, ArrayAccess
     public function setFileSize($file_size)
     {
         $this->container['file_size'] = $file_size;
+
+        return $this;
+    }
+
+    /**
+     * Gets contains_content_moderation_rejection
+     *
+     * @return bool
+     */
+    public function getContainsContentModerationRejection()
+    {
+        return $this->container['contains_content_moderation_rejection'];
+    }
+
+    /**
+     * Sets contains_content_moderation_rejection
+     *
+     * @param bool $contains_content_moderation_rejection Set to true when using NSFW Content Moderation in the Cloudmersive Storage Protect product (disabled by default)
+     *
+     * @return $this
+     */
+    public function setContainsContentModerationRejection($contains_content_moderation_rejection)
+    {
+        $this->container['contains_content_moderation_rejection'] = $contains_content_moderation_rejection;
 
         return $this;
     }
