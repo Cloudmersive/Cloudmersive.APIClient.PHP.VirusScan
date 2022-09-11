@@ -421,15 +421,17 @@ class ScanCloudStorageApi
      * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_macros Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended). (optional)
+     * @param  bool $allow_insecure_deserialization Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
+     * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability]. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\CloudStorageAdvancedVirusScanResult
      */
-    public function scanCloudStorageScanAwsS3FileAdvanced($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    public function scanCloudStorageScanAwsS3FileAdvanced($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
-        list($response) = $this->scanCloudStorageScanAwsS3FileAdvancedWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types);
+        list($response) = $this->scanCloudStorageScanAwsS3FileAdvancedWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types);
         return $response;
     }
 
@@ -449,16 +451,18 @@ class ScanCloudStorageApi
      * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_macros Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended). (optional)
+     * @param  bool $allow_insecure_deserialization Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
+     * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability]. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\CloudStorageAdvancedVirusScanResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function scanCloudStorageScanAwsS3FileAdvancedWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    public function scanCloudStorageScanAwsS3FileAdvancedWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
         $returnType = '\Swagger\Client\Model\CloudStorageAdvancedVirusScanResult';
-        $request = $this->scanCloudStorageScanAwsS3FileAdvancedRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types);
+        $request = $this->scanCloudStorageScanAwsS3FileAdvancedRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types);
 
         try {
             $options = $this->createHttpClientOption();
@@ -535,14 +539,16 @@ class ScanCloudStorageApi
      * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_macros Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended). (optional)
+     * @param  bool $allow_insecure_deserialization Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
+     * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability]. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanCloudStorageScanAwsS3FileAdvancedAsync($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    public function scanCloudStorageScanAwsS3FileAdvancedAsync($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
-        return $this->scanCloudStorageScanAwsS3FileAdvancedAsyncWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types)
+        return $this->scanCloudStorageScanAwsS3FileAdvancedAsyncWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -566,15 +572,17 @@ class ScanCloudStorageApi
      * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_macros Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended). (optional)
+     * @param  bool $allow_insecure_deserialization Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
+     * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability]. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanCloudStorageScanAwsS3FileAdvancedAsyncWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    public function scanCloudStorageScanAwsS3FileAdvancedAsyncWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
         $returnType = '\Swagger\Client\Model\CloudStorageAdvancedVirusScanResult';
-        $request = $this->scanCloudStorageScanAwsS3FileAdvancedRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types);
+        $request = $this->scanCloudStorageScanAwsS3FileAdvancedRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -627,12 +635,14 @@ class ScanCloudStorageApi
      * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_macros Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended). (optional)
+     * @param  bool $allow_insecure_deserialization Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
+     * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability]. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function scanCloudStorageScanAwsS3FileAdvancedRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    protected function scanCloudStorageScanAwsS3FileAdvancedRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
         // verify the required parameter 'access_key' is set
         if ($access_key === null) {
@@ -715,6 +725,14 @@ class ScanCloudStorageApi
         // header params
         if ($allow_xml_external_entities !== null) {
             $headerParams['allowXmlExternalEntities'] = ObjectSerializer::toHeaderValue($allow_xml_external_entities);
+        }
+        // header params
+        if ($allow_insecure_deserialization !== null) {
+            $headerParams['allowInsecureDeserialization'] = ObjectSerializer::toHeaderValue($allow_insecure_deserialization);
+        }
+        // header params
+        if ($allow_html !== null) {
+            $headerParams['allowHtml'] = ObjectSerializer::toHeaderValue($allow_html);
         }
         // header params
         if ($restrict_file_types !== null) {
@@ -1098,15 +1116,17 @@ class ScanCloudStorageApi
      * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_macros Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended). (optional)
+     * @param  bool $allow_insecure_deserialization Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
+     * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability]. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\CloudStorageAdvancedVirusScanResult
      */
-    public function scanCloudStorageScanAzureBlobAdvanced($connection_string, $container_name, $blob_path, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    public function scanCloudStorageScanAzureBlobAdvanced($connection_string, $container_name, $blob_path, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
-        list($response) = $this->scanCloudStorageScanAzureBlobAdvancedWithHttpInfo($connection_string, $container_name, $blob_path, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types);
+        list($response) = $this->scanCloudStorageScanAzureBlobAdvancedWithHttpInfo($connection_string, $container_name, $blob_path, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types);
         return $response;
     }
 
@@ -1124,16 +1144,18 @@ class ScanCloudStorageApi
      * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_macros Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended). (optional)
+     * @param  bool $allow_insecure_deserialization Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
+     * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability]. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\CloudStorageAdvancedVirusScanResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function scanCloudStorageScanAzureBlobAdvancedWithHttpInfo($connection_string, $container_name, $blob_path, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    public function scanCloudStorageScanAzureBlobAdvancedWithHttpInfo($connection_string, $container_name, $blob_path, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
         $returnType = '\Swagger\Client\Model\CloudStorageAdvancedVirusScanResult';
-        $request = $this->scanCloudStorageScanAzureBlobAdvancedRequest($connection_string, $container_name, $blob_path, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types);
+        $request = $this->scanCloudStorageScanAzureBlobAdvancedRequest($connection_string, $container_name, $blob_path, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1208,14 +1230,16 @@ class ScanCloudStorageApi
      * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_macros Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended). (optional)
+     * @param  bool $allow_insecure_deserialization Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
+     * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability]. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanCloudStorageScanAzureBlobAdvancedAsync($connection_string, $container_name, $blob_path, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    public function scanCloudStorageScanAzureBlobAdvancedAsync($connection_string, $container_name, $blob_path, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
-        return $this->scanCloudStorageScanAzureBlobAdvancedAsyncWithHttpInfo($connection_string, $container_name, $blob_path, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types)
+        return $this->scanCloudStorageScanAzureBlobAdvancedAsyncWithHttpInfo($connection_string, $container_name, $blob_path, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1237,15 +1261,17 @@ class ScanCloudStorageApi
      * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_macros Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended). (optional)
+     * @param  bool $allow_insecure_deserialization Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
+     * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability]. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanCloudStorageScanAzureBlobAdvancedAsyncWithHttpInfo($connection_string, $container_name, $blob_path, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    public function scanCloudStorageScanAzureBlobAdvancedAsyncWithHttpInfo($connection_string, $container_name, $blob_path, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
         $returnType = '\Swagger\Client\Model\CloudStorageAdvancedVirusScanResult';
-        $request = $this->scanCloudStorageScanAzureBlobAdvancedRequest($connection_string, $container_name, $blob_path, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types);
+        $request = $this->scanCloudStorageScanAzureBlobAdvancedRequest($connection_string, $container_name, $blob_path, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1296,12 +1322,14 @@ class ScanCloudStorageApi
      * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_macros Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended). (optional)
+     * @param  bool $allow_insecure_deserialization Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
+     * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability]. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function scanCloudStorageScanAzureBlobAdvancedRequest($connection_string, $container_name, $blob_path, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    protected function scanCloudStorageScanAzureBlobAdvancedRequest($connection_string, $container_name, $blob_path, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
         // verify the required parameter 'connection_string' is set
         if ($connection_string === null) {
@@ -1364,6 +1392,14 @@ class ScanCloudStorageApi
         // header params
         if ($allow_xml_external_entities !== null) {
             $headerParams['allowXmlExternalEntities'] = ObjectSerializer::toHeaderValue($allow_xml_external_entities);
+        }
+        // header params
+        if ($allow_insecure_deserialization !== null) {
+            $headerParams['allowInsecureDeserialization'] = ObjectSerializer::toHeaderValue($allow_insecure_deserialization);
+        }
+        // header params
+        if ($allow_html !== null) {
+            $headerParams['allowHtml'] = ObjectSerializer::toHeaderValue($allow_html);
         }
         // header params
         if ($restrict_file_types !== null) {
@@ -1748,15 +1784,17 @@ class ScanCloudStorageApi
      * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_macros Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended). (optional)
+     * @param  bool $allow_insecure_deserialization Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
+     * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability]. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\CloudStorageAdvancedVirusScanResult
      */
-    public function scanCloudStorageScanGcpStorageFileAdvanced($bucket_name, $object_name, $json_credential_file, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    public function scanCloudStorageScanGcpStorageFileAdvanced($bucket_name, $object_name, $json_credential_file, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
-        list($response) = $this->scanCloudStorageScanGcpStorageFileAdvancedWithHttpInfo($bucket_name, $object_name, $json_credential_file, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types);
+        list($response) = $this->scanCloudStorageScanGcpStorageFileAdvancedWithHttpInfo($bucket_name, $object_name, $json_credential_file, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types);
         return $response;
     }
 
@@ -1774,16 +1812,18 @@ class ScanCloudStorageApi
      * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_macros Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended). (optional)
+     * @param  bool $allow_insecure_deserialization Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
+     * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability]. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\CloudStorageAdvancedVirusScanResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function scanCloudStorageScanGcpStorageFileAdvancedWithHttpInfo($bucket_name, $object_name, $json_credential_file, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    public function scanCloudStorageScanGcpStorageFileAdvancedWithHttpInfo($bucket_name, $object_name, $json_credential_file, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
         $returnType = '\Swagger\Client\Model\CloudStorageAdvancedVirusScanResult';
-        $request = $this->scanCloudStorageScanGcpStorageFileAdvancedRequest($bucket_name, $object_name, $json_credential_file, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types);
+        $request = $this->scanCloudStorageScanGcpStorageFileAdvancedRequest($bucket_name, $object_name, $json_credential_file, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1858,14 +1898,16 @@ class ScanCloudStorageApi
      * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_macros Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended). (optional)
+     * @param  bool $allow_insecure_deserialization Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
+     * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability]. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanCloudStorageScanGcpStorageFileAdvancedAsync($bucket_name, $object_name, $json_credential_file, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    public function scanCloudStorageScanGcpStorageFileAdvancedAsync($bucket_name, $object_name, $json_credential_file, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
-        return $this->scanCloudStorageScanGcpStorageFileAdvancedAsyncWithHttpInfo($bucket_name, $object_name, $json_credential_file, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types)
+        return $this->scanCloudStorageScanGcpStorageFileAdvancedAsyncWithHttpInfo($bucket_name, $object_name, $json_credential_file, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1887,15 +1929,17 @@ class ScanCloudStorageApi
      * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_macros Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended). (optional)
+     * @param  bool $allow_insecure_deserialization Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
+     * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability]. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanCloudStorageScanGcpStorageFileAdvancedAsyncWithHttpInfo($bucket_name, $object_name, $json_credential_file, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    public function scanCloudStorageScanGcpStorageFileAdvancedAsyncWithHttpInfo($bucket_name, $object_name, $json_credential_file, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
         $returnType = '\Swagger\Client\Model\CloudStorageAdvancedVirusScanResult';
-        $request = $this->scanCloudStorageScanGcpStorageFileAdvancedRequest($bucket_name, $object_name, $json_credential_file, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types);
+        $request = $this->scanCloudStorageScanGcpStorageFileAdvancedRequest($bucket_name, $object_name, $json_credential_file, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1946,12 +1990,14 @@ class ScanCloudStorageApi
      * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_macros Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended). (optional)
+     * @param  bool $allow_insecure_deserialization Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
+     * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability]. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function scanCloudStorageScanGcpStorageFileAdvancedRequest($bucket_name, $object_name, $json_credential_file, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    protected function scanCloudStorageScanGcpStorageFileAdvancedRequest($bucket_name, $object_name, $json_credential_file, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
         // verify the required parameter 'bucket_name' is set
         if ($bucket_name === null) {
@@ -2010,6 +2056,14 @@ class ScanCloudStorageApi
         // header params
         if ($allow_xml_external_entities !== null) {
             $headerParams['allowXmlExternalEntities'] = ObjectSerializer::toHeaderValue($allow_xml_external_entities);
+        }
+        // header params
+        if ($allow_insecure_deserialization !== null) {
+            $headerParams['allowInsecureDeserialization'] = ObjectSerializer::toHeaderValue($allow_insecure_deserialization);
+        }
+        // header params
+        if ($allow_html !== null) {
+            $headerParams['allowHtml'] = ObjectSerializer::toHeaderValue($allow_html);
         }
         // header params
         if ($restrict_file_types !== null) {
@@ -2450,15 +2504,17 @@ class ScanCloudStorageApi
      * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_macros Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended). (optional)
+     * @param  bool $allow_insecure_deserialization Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
+     * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability]. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\CloudStorageAdvancedVirusScanResult
      */
-    public function scanCloudStorageScanSharePointOnlineFileAdvanced($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id = null, $file_path = null, $item_id = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    public function scanCloudStorageScanSharePointOnlineFileAdvanced($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id = null, $file_path = null, $item_id = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
-        list($response) = $this->scanCloudStorageScanSharePointOnlineFileAdvancedWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id, $file_path, $item_id, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types);
+        list($response) = $this->scanCloudStorageScanSharePointOnlineFileAdvancedWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id, $file_path, $item_id, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types);
         return $response;
     }
 
@@ -2480,16 +2536,18 @@ class ScanCloudStorageApi
      * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_macros Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended). (optional)
+     * @param  bool $allow_insecure_deserialization Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
+     * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability]. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\CloudStorageAdvancedVirusScanResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function scanCloudStorageScanSharePointOnlineFileAdvancedWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id = null, $file_path = null, $item_id = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    public function scanCloudStorageScanSharePointOnlineFileAdvancedWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id = null, $file_path = null, $item_id = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
         $returnType = '\Swagger\Client\Model\CloudStorageAdvancedVirusScanResult';
-        $request = $this->scanCloudStorageScanSharePointOnlineFileAdvancedRequest($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id, $file_path, $item_id, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types);
+        $request = $this->scanCloudStorageScanSharePointOnlineFileAdvancedRequest($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id, $file_path, $item_id, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2568,14 +2626,16 @@ class ScanCloudStorageApi
      * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_macros Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended). (optional)
+     * @param  bool $allow_insecure_deserialization Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
+     * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability]. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanCloudStorageScanSharePointOnlineFileAdvancedAsync($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id = null, $file_path = null, $item_id = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    public function scanCloudStorageScanSharePointOnlineFileAdvancedAsync($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id = null, $file_path = null, $item_id = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
-        return $this->scanCloudStorageScanSharePointOnlineFileAdvancedAsyncWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id, $file_path, $item_id, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types)
+        return $this->scanCloudStorageScanSharePointOnlineFileAdvancedAsyncWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id, $file_path, $item_id, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2601,15 +2661,17 @@ class ScanCloudStorageApi
      * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_macros Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended). (optional)
+     * @param  bool $allow_insecure_deserialization Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
+     * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability]. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanCloudStorageScanSharePointOnlineFileAdvancedAsyncWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id = null, $file_path = null, $item_id = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    public function scanCloudStorageScanSharePointOnlineFileAdvancedAsyncWithHttpInfo($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id = null, $file_path = null, $item_id = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
         $returnType = '\Swagger\Client\Model\CloudStorageAdvancedVirusScanResult';
-        $request = $this->scanCloudStorageScanSharePointOnlineFileAdvancedRequest($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id, $file_path, $item_id, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $restrict_file_types);
+        $request = $this->scanCloudStorageScanSharePointOnlineFileAdvancedRequest($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id, $file_path, $item_id, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2664,12 +2726,14 @@ class ScanCloudStorageApi
      * @param  bool $allow_password_protected_files Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_macros Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
      * @param  bool $allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended). (optional)
+     * @param  bool $allow_insecure_deserialization Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended). (optional)
+     * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability]. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function scanCloudStorageScanSharePointOnlineFileAdvancedRequest($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id = null, $file_path = null, $item_id = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $restrict_file_types = null)
+    protected function scanCloudStorageScanSharePointOnlineFileAdvancedRequest($client_id, $client_secret, $sharepoint_domain_name, $site_id, $tenant_id = null, $file_path = null, $item_id = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
         // verify the required parameter 'client_id' is set
         if ($client_id === null) {
@@ -2754,6 +2818,14 @@ class ScanCloudStorageApi
         // header params
         if ($allow_xml_external_entities !== null) {
             $headerParams['allowXmlExternalEntities'] = ObjectSerializer::toHeaderValue($allow_xml_external_entities);
+        }
+        // header params
+        if ($allow_insecure_deserialization !== null) {
+            $headerParams['allowInsecureDeserialization'] = ObjectSerializer::toHeaderValue($allow_insecure_deserialization);
+        }
+        // header params
+        if ($allow_html !== null) {
+            $headerParams['allowHtml'] = ObjectSerializer::toHeaderValue($allow_html);
         }
         // header params
         if ($restrict_file_types !== null) {
