@@ -11,7 +11,6 @@
 
 namespace Prophecy\Call;
 
-use Prophecy\Exception\Prophecy\MethodProphecyException;
 use Prophecy\Prophecy\MethodProphecy;
 use Prophecy\Prophecy\ObjectProphecy;
 use Prophecy\Argument\ArgumentsWildcard;
@@ -55,17 +54,7 @@ class CallCenter
      */
     public function makeCall(ObjectProphecy $prophecy, $methodName, array $arguments)
     {
-        // For efficiency exclude 'args' from the generated backtrace
-        if (PHP_VERSION_ID >= 50400) {
-            // Limit backtrace to last 3 calls as we don't use the rest
-            // Limit argument was introduced in PHP 5.4.0
-            $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 3);
-        } elseif (defined('DEBUG_BACKTRACE_IGNORE_ARGS')) {
-            // DEBUG_BACKTRACE_IGNORE_ARGS was introduced in PHP 5.3.6
-            $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
-        } else {
-            $backtrace = debug_backtrace();
-        }
+        $backtrace = debug_backtrace();
 
         $file = $line = null;
         if (isset($backtrace[2]) && isset($backtrace[2]['file'])) {
@@ -96,30 +85,20 @@ class CallCenter
         // Sort matches by their score value
         @usort($matches, function ($match1, $match2) { return $match2[0] - $match1[0]; });
 
-        $score = $matches[0][0];
         // If Highest rated method prophecy has a promise - execute it or return null instead
-        $methodProphecy = $matches[0][1];
         $returnValue = null;
         $exception   = null;
-        if ($promise = $methodProphecy->getPromise()) {
+        if ($promise = $matches[0][1]->getPromise()) {
             try {
-                $returnValue = $promise->execute($arguments, $prophecy, $methodProphecy);
+                $returnValue = $promise->execute($arguments, $prophecy, $matches[0][1]);
             } catch (\Exception $e) {
                 $exception = $e;
             }
         }
 
-        if ($methodProphecy->hasReturnVoid() && $returnValue !== null) {
-            throw new MethodProphecyException(
-                "The method \"$methodName\" has a void return type, but the promise returned a value",
-                $methodProphecy
-            );
-        }
-
-        $this->recordedCalls[] = $call = new Call(
+        $this->recordedCalls[] = new Call(
             $methodName, $arguments, $returnValue, $exception, $file, $line
         );
-        $call->addScore($methodProphecy->getArgumentsWildcard(), $score);
 
         if (null !== $exception) {
             throw $exception;
@@ -141,7 +120,7 @@ class CallCenter
         return array_values(
             array_filter($this->recordedCalls, function (Call $call) use ($methodName, $wildcard) {
                 return $methodName === $call->getMethodName()
-                    && 0 < $call->getScore($wildcard)
+                    && 0 < $wildcard->scoreArguments($call->getArguments())
                 ;
             })
         );
@@ -151,79 +130,23 @@ class CallCenter
                                                    array $arguments)
     {
         $classname = get_class($prophecy->reveal());
-        $indentationLength = 8; // looks good
-        $argstring = implode(
-            ",\n",
-            $this->indentArguments(
-                array_map(array($this->util, 'stringify'), $arguments),
-                $indentationLength
-            )
-        );
-
-        $expected = array();
-
-        foreach (call_user_func_array('array_merge', $prophecy->getMethodProphecies()) as $methodProphecy) {
-            $expected[] = sprintf(
-                "  - %s(\n" .
-                "%s\n" .
-                "    )",
+        $argstring = implode(', ', array_map(array($this->util, 'stringify'), $arguments));
+        $expected  = implode("\n", array_map(function (MethodProphecy $methodProphecy) {
+            return sprintf('  - %s(%s)',
                 $methodProphecy->getMethodName(),
-                implode(
-                    ",\n",
-                    $this->indentArguments(
-                        array_map('strval', $methodProphecy->getArgumentsWildcard()->getTokens()),
-                        $indentationLength
-                    )
-                )
+                $methodProphecy->getArgumentsWildcard()
             );
-        }
+        }, call_user_func_array('array_merge', $prophecy->getMethodProphecies())));
 
         return new UnexpectedCallException(
             sprintf(
-                "Unexpected method call on %s:\n".
-                "  - %s(\n".
-                "%s\n".
-                "    )\n".
-                "expected calls were:\n".
-                "%s",
+                "Method call:\n".
+                "  - %s(%s)\n".
+                "on %s was not expected, expected calls were:\n%s",
 
-                $classname, $methodName, $argstring, implode("\n", $expected)
+                $methodName, $argstring, $classname, $expected
             ),
             $prophecy, $methodName, $arguments
-
-        );
-    }
-
-    private function formatExceptionMessage(MethodProphecy $methodProphecy)
-    {
-        return sprintf(
-            "  - %s(\n".
-            "%s\n".
-            "    )",
-            $methodProphecy->getMethodName(),
-            implode(
-                ",\n",
-                $this->indentArguments(
-                    array_map(
-                        function ($token) {
-                            return (string) $token;
-                        },
-                        $methodProphecy->getArgumentsWildcard()->getTokens()
-                    ),
-                    $indentationLength
-                )
-            )
-        );
-    }
-
-    private function indentArguments(array $arguments, $indentationLength)
-    {
-        return preg_replace_callback(
-            '/^/m',
-            function () use ($indentationLength) {
-                return str_repeat(' ', $indentationLength);
-            },
-            $arguments
         );
     }
 }
