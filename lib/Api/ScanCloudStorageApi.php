@@ -1732,7 +1732,7 @@ class ScanCloudStorageApi
         // form params
         if ($json_credential_file !== null) {
             $multipart = true;
-            $formParams['jsonCredentialFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($json_credential_file), 'rb');
+            $formParams['jsonCredentialFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($json_credential_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -2114,7 +2114,7 @@ class ScanCloudStorageApi
         // form params
         if ($json_credential_file !== null) {
             $multipart = true;
-            $formParams['jsonCredentialFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($json_credential_file), 'rb');
+            $formParams['jsonCredentialFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($json_credential_file), 'rb');
         }
         // body params
         $_tempBody = null;
