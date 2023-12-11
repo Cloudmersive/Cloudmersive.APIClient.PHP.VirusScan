@@ -364,6 +364,7 @@ class ScanApi
      * Advanced Scan a file for viruses
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $file_name Optional: specify the original file name of the file being scanned.  By default the file name is taken from inputFile parameter, but if this is not provided, or you wish to override it, you can specify the original file name using this parameter. (optional)
      * @param  bool $allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). (optional)
      * @param  bool $allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). (optional)
      * @param  bool $allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). (optional)
@@ -374,15 +375,16 @@ class ScanApi
      * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability].  If set to true, HTML files containing script tags will be allowed, but ContainsScript will be set to true if script tags are present. (optional)
      * @param  bool $allow_unsafe_archives Set to false to block unsafe archives such as Zip Bombs, and other archives that can cause unsafe extraction outcomes.  Default is false (recommended).  If set to true, unsafe archives will be allowed. (optional)
      * @param  bool $allow_ole_embedded_object Set to false to block OLE embedded objects, which can contain vulnerabilities and executable code.  Default is false (recommended).  If set to true, OLE embedded objects will be allowed. (optional)
+     * @param  string $options Comma separated set of configuration operations.  Include permitJavascriptAndHtmlInPDFs to allow JavaScript and HTML in PDF files.  Default is no options. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\VirusScanAdvancedResult
      */
-    public function scanFileAdvanced($input_file, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $allow_unsafe_archives = null, $allow_ole_embedded_object = null, $restrict_file_types = null)
+    public function scanFileAdvanced($input_file, $file_name = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $allow_unsafe_archives = null, $allow_ole_embedded_object = null, $options = null, $restrict_file_types = null)
     {
-        list($response) = $this->scanFileAdvancedWithHttpInfo($input_file, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $allow_unsafe_archives, $allow_ole_embedded_object, $restrict_file_types);
+        list($response) = $this->scanFileAdvancedWithHttpInfo($input_file, $file_name, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $allow_unsafe_archives, $allow_ole_embedded_object, $options, $restrict_file_types);
         return $response;
     }
 
@@ -392,6 +394,7 @@ class ScanApi
      * Advanced Scan a file for viruses
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $file_name Optional: specify the original file name of the file being scanned.  By default the file name is taken from inputFile parameter, but if this is not provided, or you wish to override it, you can specify the original file name using this parameter. (optional)
      * @param  bool $allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). (optional)
      * @param  bool $allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). (optional)
      * @param  bool $allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). (optional)
@@ -402,16 +405,17 @@ class ScanApi
      * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability].  If set to true, HTML files containing script tags will be allowed, but ContainsScript will be set to true if script tags are present. (optional)
      * @param  bool $allow_unsafe_archives Set to false to block unsafe archives such as Zip Bombs, and other archives that can cause unsafe extraction outcomes.  Default is false (recommended).  If set to true, unsafe archives will be allowed. (optional)
      * @param  bool $allow_ole_embedded_object Set to false to block OLE embedded objects, which can contain vulnerabilities and executable code.  Default is false (recommended).  If set to true, OLE embedded objects will be allowed. (optional)
+     * @param  string $options Comma separated set of configuration operations.  Include permitJavascriptAndHtmlInPDFs to allow JavaScript and HTML in PDF files.  Default is no options. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\VirusScanAdvancedResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function scanFileAdvancedWithHttpInfo($input_file, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $allow_unsafe_archives = null, $allow_ole_embedded_object = null, $restrict_file_types = null)
+    public function scanFileAdvancedWithHttpInfo($input_file, $file_name = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $allow_unsafe_archives = null, $allow_ole_embedded_object = null, $options = null, $restrict_file_types = null)
     {
         $returnType = '\Swagger\Client\Model\VirusScanAdvancedResult';
-        $request = $this->scanFileAdvancedRequest($input_file, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $allow_unsafe_archives, $allow_ole_embedded_object, $restrict_file_types);
+        $request = $this->scanFileAdvancedRequest($input_file, $file_name, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $allow_unsafe_archives, $allow_ole_embedded_object, $options, $restrict_file_types);
 
         try {
             $options = $this->createHttpClientOption();
@@ -478,6 +482,7 @@ class ScanApi
      * Advanced Scan a file for viruses
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $file_name Optional: specify the original file name of the file being scanned.  By default the file name is taken from inputFile parameter, but if this is not provided, or you wish to override it, you can specify the original file name using this parameter. (optional)
      * @param  bool $allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). (optional)
      * @param  bool $allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). (optional)
      * @param  bool $allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). (optional)
@@ -488,14 +493,15 @@ class ScanApi
      * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability].  If set to true, HTML files containing script tags will be allowed, but ContainsScript will be set to true if script tags are present. (optional)
      * @param  bool $allow_unsafe_archives Set to false to block unsafe archives such as Zip Bombs, and other archives that can cause unsafe extraction outcomes.  Default is false (recommended).  If set to true, unsafe archives will be allowed. (optional)
      * @param  bool $allow_ole_embedded_object Set to false to block OLE embedded objects, which can contain vulnerabilities and executable code.  Default is false (recommended).  If set to true, OLE embedded objects will be allowed. (optional)
+     * @param  string $options Comma separated set of configuration operations.  Include permitJavascriptAndHtmlInPDFs to allow JavaScript and HTML in PDF files.  Default is no options. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanFileAdvancedAsync($input_file, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $allow_unsafe_archives = null, $allow_ole_embedded_object = null, $restrict_file_types = null)
+    public function scanFileAdvancedAsync($input_file, $file_name = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $allow_unsafe_archives = null, $allow_ole_embedded_object = null, $options = null, $restrict_file_types = null)
     {
-        return $this->scanFileAdvancedAsyncWithHttpInfo($input_file, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $allow_unsafe_archives, $allow_ole_embedded_object, $restrict_file_types)
+        return $this->scanFileAdvancedAsyncWithHttpInfo($input_file, $file_name, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $allow_unsafe_archives, $allow_ole_embedded_object, $options, $restrict_file_types)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -509,6 +515,7 @@ class ScanApi
      * Advanced Scan a file for viruses
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $file_name Optional: specify the original file name of the file being scanned.  By default the file name is taken from inputFile parameter, but if this is not provided, or you wish to override it, you can specify the original file name using this parameter. (optional)
      * @param  bool $allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). (optional)
      * @param  bool $allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). (optional)
      * @param  bool $allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). (optional)
@@ -519,15 +526,16 @@ class ScanApi
      * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability].  If set to true, HTML files containing script tags will be allowed, but ContainsScript will be set to true if script tags are present. (optional)
      * @param  bool $allow_unsafe_archives Set to false to block unsafe archives such as Zip Bombs, and other archives that can cause unsafe extraction outcomes.  Default is false (recommended).  If set to true, unsafe archives will be allowed. (optional)
      * @param  bool $allow_ole_embedded_object Set to false to block OLE embedded objects, which can contain vulnerabilities and executable code.  Default is false (recommended).  If set to true, OLE embedded objects will be allowed. (optional)
+     * @param  string $options Comma separated set of configuration operations.  Include permitJavascriptAndHtmlInPDFs to allow JavaScript and HTML in PDF files.  Default is no options. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanFileAdvancedAsyncWithHttpInfo($input_file, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $allow_unsafe_archives = null, $allow_ole_embedded_object = null, $restrict_file_types = null)
+    public function scanFileAdvancedAsyncWithHttpInfo($input_file, $file_name = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $allow_unsafe_archives = null, $allow_ole_embedded_object = null, $options = null, $restrict_file_types = null)
     {
         $returnType = '\Swagger\Client\Model\VirusScanAdvancedResult';
-        $request = $this->scanFileAdvancedRequest($input_file, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $allow_unsafe_archives, $allow_ole_embedded_object, $restrict_file_types);
+        $request = $this->scanFileAdvancedRequest($input_file, $file_name, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $allow_unsafe_archives, $allow_ole_embedded_object, $options, $restrict_file_types);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -570,6 +578,7 @@ class ScanApi
      * Create request for operation 'scanFileAdvanced'
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $file_name Optional: specify the original file name of the file being scanned.  By default the file name is taken from inputFile parameter, but if this is not provided, or you wish to override it, you can specify the original file name using this parameter. (optional)
      * @param  bool $allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). (optional)
      * @param  bool $allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). (optional)
      * @param  bool $allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). (optional)
@@ -580,12 +589,13 @@ class ScanApi
      * @param  bool $allow_html Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability].  If set to true, HTML files containing script tags will be allowed, but ContainsScript will be set to true if script tags are present. (optional)
      * @param  bool $allow_unsafe_archives Set to false to block unsafe archives such as Zip Bombs, and other archives that can cause unsafe extraction outcomes.  Default is false (recommended).  If set to true, unsafe archives will be allowed. (optional)
      * @param  bool $allow_ole_embedded_object Set to false to block OLE embedded objects, which can contain vulnerabilities and executable code.  Default is false (recommended).  If set to true, OLE embedded objects will be allowed. (optional)
+     * @param  string $options Comma separated set of configuration operations.  Include permitJavascriptAndHtmlInPDFs to allow JavaScript and HTML in PDF files.  Default is no options. (optional)
      * @param  string $restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function scanFileAdvancedRequest($input_file, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $allow_unsafe_archives = null, $allow_ole_embedded_object = null, $restrict_file_types = null)
+    protected function scanFileAdvancedRequest($input_file, $file_name = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $allow_unsafe_archives = null, $allow_ole_embedded_object = null, $options = null, $restrict_file_types = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null || (is_array($input_file) && count($input_file) === 0)) {
@@ -601,6 +611,10 @@ class ScanApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($file_name !== null) {
+            $headerParams['fileName'] = ObjectSerializer::toHeaderValue($file_name);
+        }
         // header params
         if ($allow_executables !== null) {
             $headerParams['allowExecutables'] = ObjectSerializer::toHeaderValue($allow_executables);
@@ -640,6 +654,10 @@ class ScanApi
         // header params
         if ($allow_ole_embedded_object !== null) {
             $headerParams['allowOleEmbeddedObject'] = ObjectSerializer::toHeaderValue($allow_ole_embedded_object);
+        }
+        // header params
+        if ($options !== null) {
+            $headerParams['options'] = ObjectSerializer::toHeaderValue($options);
         }
         // header params
         if ($restrict_file_types !== null) {

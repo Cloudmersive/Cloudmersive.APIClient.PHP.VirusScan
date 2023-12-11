@@ -97,14 +97,15 @@ class ScanCloudStorageApi
      * @param  string $bucket_region Name of the region of the S3 bucket, such as &#39;US-East-1&#39; (required)
      * @param  string $bucket_name Name of the S3 bucket (required)
      * @param  string $key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses.  If the key name contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. (required)
+     * @param  string $role_arn Optional: Role ARN for STS Credential-based access.  This is for advanced access using the Security Token Service and is not required.  If the roleArn contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\CloudStorageVirusScanResult
      */
-    public function scanCloudStorageScanAwsS3File($access_key, $secret_key, $bucket_region, $bucket_name, $key_name)
+    public function scanCloudStorageScanAwsS3File($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn = null)
     {
-        list($response) = $this->scanCloudStorageScanAwsS3FileWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name);
+        list($response) = $this->scanCloudStorageScanAwsS3FileWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn);
         return $response;
     }
 
@@ -118,15 +119,16 @@ class ScanCloudStorageApi
      * @param  string $bucket_region Name of the region of the S3 bucket, such as &#39;US-East-1&#39; (required)
      * @param  string $bucket_name Name of the S3 bucket (required)
      * @param  string $key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses.  If the key name contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. (required)
+     * @param  string $role_arn Optional: Role ARN for STS Credential-based access.  This is for advanced access using the Security Token Service and is not required.  If the roleArn contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\CloudStorageVirusScanResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function scanCloudStorageScanAwsS3FileWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name)
+    public function scanCloudStorageScanAwsS3FileWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn = null)
     {
         $returnType = '\Swagger\Client\Model\CloudStorageVirusScanResult';
-        $request = $this->scanCloudStorageScanAwsS3FileRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name);
+        $request = $this->scanCloudStorageScanAwsS3FileRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn);
 
         try {
             $options = $this->createHttpClientOption();
@@ -197,13 +199,14 @@ class ScanCloudStorageApi
      * @param  string $bucket_region Name of the region of the S3 bucket, such as &#39;US-East-1&#39; (required)
      * @param  string $bucket_name Name of the S3 bucket (required)
      * @param  string $key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses.  If the key name contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. (required)
+     * @param  string $role_arn Optional: Role ARN for STS Credential-based access.  This is for advanced access using the Security Token Service and is not required.  If the roleArn contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanCloudStorageScanAwsS3FileAsync($access_key, $secret_key, $bucket_region, $bucket_name, $key_name)
+    public function scanCloudStorageScanAwsS3FileAsync($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn = null)
     {
-        return $this->scanCloudStorageScanAwsS3FileAsyncWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name)
+        return $this->scanCloudStorageScanAwsS3FileAsyncWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -221,14 +224,15 @@ class ScanCloudStorageApi
      * @param  string $bucket_region Name of the region of the S3 bucket, such as &#39;US-East-1&#39; (required)
      * @param  string $bucket_name Name of the S3 bucket (required)
      * @param  string $key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses.  If the key name contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. (required)
+     * @param  string $role_arn Optional: Role ARN for STS Credential-based access.  This is for advanced access using the Security Token Service and is not required.  If the roleArn contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanCloudStorageScanAwsS3FileAsyncWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name)
+    public function scanCloudStorageScanAwsS3FileAsyncWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn = null)
     {
         $returnType = '\Swagger\Client\Model\CloudStorageVirusScanResult';
-        $request = $this->scanCloudStorageScanAwsS3FileRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name);
+        $request = $this->scanCloudStorageScanAwsS3FileRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -275,11 +279,12 @@ class ScanCloudStorageApi
      * @param  string $bucket_region Name of the region of the S3 bucket, such as &#39;US-East-1&#39; (required)
      * @param  string $bucket_name Name of the S3 bucket (required)
      * @param  string $key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses.  If the key name contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. (required)
+     * @param  string $role_arn Optional: Role ARN for STS Credential-based access.  This is for advanced access using the Security Token Service and is not required.  If the roleArn contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function scanCloudStorageScanAwsS3FileRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name)
+    protected function scanCloudStorageScanAwsS3FileRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn = null)
     {
         // verify the required parameter 'access_key' is set
         if ($access_key === null || (is_array($access_key) && count($access_key) === 0)) {
@@ -338,6 +343,10 @@ class ScanCloudStorageApi
         // header params
         if ($key_name !== null) {
             $headerParams['keyName'] = ObjectSerializer::toHeaderValue($key_name);
+        }
+        // header params
+        if ($role_arn !== null) {
+            $headerParams['roleArn'] = ObjectSerializer::toHeaderValue($role_arn);
         }
 
 
@@ -427,6 +436,7 @@ class ScanCloudStorageApi
      * @param  string $bucket_region Name of the region of the S3 bucket, such as &#39;US-East-1&#39; (required)
      * @param  string $bucket_name Name of the S3 bucket (required)
      * @param  string $key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses.  If the key name contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. (required)
+     * @param  string $role_arn Optional: Role ARN for STS Credential-based access.  This is for advanced access using the Security Token Service and is not required.  If the roleArn contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. (optional)
      * @param  bool $allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). (optional)
      * @param  bool $allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). (optional)
      * @param  bool $allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). (optional)
@@ -441,9 +451,9 @@ class ScanCloudStorageApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\CloudStorageAdvancedVirusScanResult
      */
-    public function scanCloudStorageScanAwsS3FileAdvanced($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
+    public function scanCloudStorageScanAwsS3FileAdvanced($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
-        list($response) = $this->scanCloudStorageScanAwsS3FileAdvancedWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types);
+        list($response) = $this->scanCloudStorageScanAwsS3FileAdvancedWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types);
         return $response;
     }
 
@@ -457,6 +467,7 @@ class ScanCloudStorageApi
      * @param  string $bucket_region Name of the region of the S3 bucket, such as &#39;US-East-1&#39; (required)
      * @param  string $bucket_name Name of the S3 bucket (required)
      * @param  string $key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses.  If the key name contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. (required)
+     * @param  string $role_arn Optional: Role ARN for STS Credential-based access.  This is for advanced access using the Security Token Service and is not required.  If the roleArn contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. (optional)
      * @param  bool $allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). (optional)
      * @param  bool $allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). (optional)
      * @param  bool $allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). (optional)
@@ -471,10 +482,10 @@ class ScanCloudStorageApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\CloudStorageAdvancedVirusScanResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function scanCloudStorageScanAwsS3FileAdvancedWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
+    public function scanCloudStorageScanAwsS3FileAdvancedWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
         $returnType = '\Swagger\Client\Model\CloudStorageAdvancedVirusScanResult';
-        $request = $this->scanCloudStorageScanAwsS3FileAdvancedRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types);
+        $request = $this->scanCloudStorageScanAwsS3FileAdvancedRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types);
 
         try {
             $options = $this->createHttpClientOption();
@@ -545,6 +556,7 @@ class ScanCloudStorageApi
      * @param  string $bucket_region Name of the region of the S3 bucket, such as &#39;US-East-1&#39; (required)
      * @param  string $bucket_name Name of the S3 bucket (required)
      * @param  string $key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses.  If the key name contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. (required)
+     * @param  string $role_arn Optional: Role ARN for STS Credential-based access.  This is for advanced access using the Security Token Service and is not required.  If the roleArn contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. (optional)
      * @param  bool $allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). (optional)
      * @param  bool $allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). (optional)
      * @param  bool $allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). (optional)
@@ -558,9 +570,9 @@ class ScanCloudStorageApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanCloudStorageScanAwsS3FileAdvancedAsync($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
+    public function scanCloudStorageScanAwsS3FileAdvancedAsync($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
-        return $this->scanCloudStorageScanAwsS3FileAdvancedAsyncWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types)
+        return $this->scanCloudStorageScanAwsS3FileAdvancedAsyncWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -578,6 +590,7 @@ class ScanCloudStorageApi
      * @param  string $bucket_region Name of the region of the S3 bucket, such as &#39;US-East-1&#39; (required)
      * @param  string $bucket_name Name of the S3 bucket (required)
      * @param  string $key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses.  If the key name contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. (required)
+     * @param  string $role_arn Optional: Role ARN for STS Credential-based access.  This is for advanced access using the Security Token Service and is not required.  If the roleArn contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. (optional)
      * @param  bool $allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). (optional)
      * @param  bool $allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). (optional)
      * @param  bool $allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). (optional)
@@ -591,10 +604,10 @@ class ScanCloudStorageApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scanCloudStorageScanAwsS3FileAdvancedAsyncWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
+    public function scanCloudStorageScanAwsS3FileAdvancedAsyncWithHttpInfo($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
         $returnType = '\Swagger\Client\Model\CloudStorageAdvancedVirusScanResult';
-        $request = $this->scanCloudStorageScanAwsS3FileAdvancedRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types);
+        $request = $this->scanCloudStorageScanAwsS3FileAdvancedRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -641,6 +654,7 @@ class ScanCloudStorageApi
      * @param  string $bucket_region Name of the region of the S3 bucket, such as &#39;US-East-1&#39; (required)
      * @param  string $bucket_name Name of the S3 bucket (required)
      * @param  string $key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses.  If the key name contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. (required)
+     * @param  string $role_arn Optional: Role ARN for STS Credential-based access.  This is for advanced access using the Security Token Service and is not required.  If the roleArn contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. (optional)
      * @param  bool $allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). (optional)
      * @param  bool $allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). (optional)
      * @param  bool $allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). (optional)
@@ -654,7 +668,7 @@ class ScanCloudStorageApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function scanCloudStorageScanAwsS3FileAdvancedRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
+    protected function scanCloudStorageScanAwsS3FileAdvancedRequest($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn = null, $allow_executables = null, $allow_invalid_files = null, $allow_scripts = null, $allow_password_protected_files = null, $allow_macros = null, $allow_xml_external_entities = null, $allow_insecure_deserialization = null, $allow_html = null, $restrict_file_types = null)
     {
         // verify the required parameter 'access_key' is set
         if ($access_key === null || (is_array($access_key) && count($access_key) === 0)) {
@@ -713,6 +727,10 @@ class ScanCloudStorageApi
         // header params
         if ($key_name !== null) {
             $headerParams['keyName'] = ObjectSerializer::toHeaderValue($key_name);
+        }
+        // header params
+        if ($role_arn !== null) {
+            $headerParams['roleArn'] = ObjectSerializer::toHeaderValue($role_arn);
         }
         // header params
         if ($allow_executables !== null) {

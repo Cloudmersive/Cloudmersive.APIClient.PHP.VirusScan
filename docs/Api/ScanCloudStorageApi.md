@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **scanCloudStorageScanAwsS3File**
-> \Swagger\Client\Model\CloudStorageVirusScanResult scanCloudStorageScanAwsS3File($access_key, $secret_key, $bucket_region, $bucket_name, $key_name)
+> \Swagger\Client\Model\CloudStorageVirusScanResult scanCloudStorageScanAwsS3File($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn)
 
 Scan an AWS S3 file for viruses
 
@@ -42,9 +42,10 @@ $secret_key = "secret_key_example"; // string | AWS S3 secret key for the S3 buc
 $bucket_region = "bucket_region_example"; // string | Name of the region of the S3 bucket, such as 'US-East-1'
 $bucket_name = "bucket_name_example"; // string | Name of the S3 bucket
 $key_name = "key_name_example"; // string | Key name (also called file name) of the file in S3 that you wish to scan for viruses.  If the key name contains Unicode characters, you must base64 encode the key name and prepend it with 'base64:', such as: 'base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV'.
+$role_arn = "role_arn_example"; // string | Optional: Role ARN for STS Credential-based access.  This is for advanced access using the Security Token Service and is not required.  If the roleArn contains Unicode characters, you must base64 encode the key name and prepend it with 'base64:', such as: 'base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV'.
 
 try {
-    $result = $apiInstance->scanCloudStorageScanAwsS3File($access_key, $secret_key, $bucket_region, $bucket_name, $key_name);
+    $result = $apiInstance->scanCloudStorageScanAwsS3File($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ScanCloudStorageApi->scanCloudStorageScanAwsS3File: ', $e->getMessage(), PHP_EOL;
@@ -61,6 +62,7 @@ Name | Type | Description  | Notes
  **bucket_region** | **string**| Name of the region of the S3 bucket, such as &#39;US-East-1&#39; |
  **bucket_name** | **string**| Name of the S3 bucket |
  **key_name** | **string**| Key name (also called file name) of the file in S3 that you wish to scan for viruses.  If the key name contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. |
+ **role_arn** | **string**| Optional: Role ARN for STS Credential-based access.  This is for advanced access using the Security Token Service and is not required.  If the roleArn contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. | [optional]
 
 ### Return type
 
@@ -78,7 +80,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **scanCloudStorageScanAwsS3FileAdvanced**
-> \Swagger\Client\Model\CloudStorageAdvancedVirusScanResult scanCloudStorageScanAwsS3FileAdvanced($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types)
+> \Swagger\Client\Model\CloudStorageAdvancedVirusScanResult scanCloudStorageScanAwsS3FileAdvanced($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types)
 
 Advanced Scan an AWS S3 file for viruses
 
@@ -105,6 +107,7 @@ $secret_key = "secret_key_example"; // string | AWS S3 secret key for the S3 buc
 $bucket_region = "bucket_region_example"; // string | Name of the region of the S3 bucket, such as 'US-East-1'
 $bucket_name = "bucket_name_example"; // string | Name of the S3 bucket
 $key_name = "key_name_example"; // string | Key name (also called file name) of the file in S3 that you wish to scan for viruses.  If the key name contains Unicode characters, you must base64 encode the key name and prepend it with 'base64:', such as: 'base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV'.
+$role_arn = "role_arn_example"; // string | Optional: Role ARN for STS Credential-based access.  This is for advanced access using the Security Token Service and is not required.  If the roleArn contains Unicode characters, you must base64 encode the key name and prepend it with 'base64:', such as: 'base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV'.
 $allow_executables = true; // bool | Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended).
 $allow_invalid_files = true; // bool | Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended).
 $allow_scripts = true; // bool | Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended).
@@ -116,7 +119,7 @@ $allow_html = true; // bool | Set to false to block HTML input in the top level 
 $restrict_file_types = "restrict_file_types_example"; // string | Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult=false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled.
 
 try {
-    $result = $apiInstance->scanCloudStorageScanAwsS3FileAdvanced($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types);
+    $result = $apiInstance->scanCloudStorageScanAwsS3FileAdvanced($access_key, $secret_key, $bucket_region, $bucket_name, $key_name, $role_arn, $allow_executables, $allow_invalid_files, $allow_scripts, $allow_password_protected_files, $allow_macros, $allow_xml_external_entities, $allow_insecure_deserialization, $allow_html, $restrict_file_types);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ScanCloudStorageApi->scanCloudStorageScanAwsS3FileAdvanced: ', $e->getMessage(), PHP_EOL;
@@ -133,6 +136,7 @@ Name | Type | Description  | Notes
  **bucket_region** | **string**| Name of the region of the S3 bucket, such as &#39;US-East-1&#39; |
  **bucket_name** | **string**| Name of the S3 bucket |
  **key_name** | **string**| Key name (also called file name) of the file in S3 that you wish to scan for viruses.  If the key name contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. |
+ **role_arn** | **string**| Optional: Role ARN for STS Credential-based access.  This is for advanced access using the Security Token Service and is not required.  If the roleArn contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;. | [optional]
  **allow_executables** | **bool**| Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). | [optional]
  **allow_invalid_files** | **bool**| Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). | [optional]
  **allow_scripts** | **bool**| Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). | [optional]
